@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1536
     height: 790.4
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 790
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 151
+  controlID: 37
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
     y: 0
     width: 769
     height: 740
-  m_MinSize: {x: 201, y: 442}
+  m_MinSize: {x: 201, y: 342}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
   controlID: 80
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: AnimationWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -195,14 +195,14 @@ MonoBehaviour:
     y: 426
     width: 769
     height: 314
-  m_MinSize: {x: 201, y: 221}
+  m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
   - {fileID: 13}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 22280
+  m_LastSelectedObjectID: 18654
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -418,7 +418,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -485,9 +485,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.32098258, y: 0.30353725, z: 1.1975268}
+    m_Target: {x: 1.7456939, y: 2.3617673, z: 0.48469433}
     speed: 2
-    m_Value: {x: -0.32098258, y: 0.30353725, z: 1.1975268}
+    m_Value: {x: 1.7456939, y: 2.3617673, z: 0.48469433}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -534,13 +534,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.24900702, y: -0.34545484, z: 0.095590904, w: 0.8997031}
+    m_Target: {x: 0.16994368, y: -0.7198876, z: 0.189519, w: 0.64565325}
     speed: 2
-    m_Value: {x: 0.24901363, y: -0.34546402, z: 0.095593445, w: 0.899727}
+    m_Value: {x: 0.16995178, y: -0.71992195, z: 0.18952803, w: 0.64568406}
   m_Size:
-    m_Target: 1.1514239
+    m_Target: 0.098963976
     speed: 2
-    m_Value: 1.1514239
+    m_Value: 0.098963976
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -631,14 +631,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.52513766
+    - e00: 0.48330274
       e01: 0
       e02: 0
-      e03: 62.262375
+      e03: 58.497253
       e10: 0
-      e11: 0.52513766
+      e11: 0.48330274
       e12: 0
-      e13: 75.546776
+      e13: 84.12293
       e20: 0
       e21: 0
       e22: 1
@@ -647,14 +647,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.60577315
+    - e00: 0.9079432
       e01: 0
       e02: 0
-      e03: -3.1731873
+      e03: -84.28259
       e10: 0
-      e11: 0.60577315
+      e11: 0.9079432
       e12: 0
-      e13: 104.449486
+      e13: 121.9108
       e20: 0
       e21: 0
       e22: 1
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: a5774a1e2395ce64bb7ce44c76908b75, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 4665554379333003101, guid: a5774a1e2395ce64bb7ce44c76908b75, type: 2}
+  - m_Target: {fileID: -4876637646348840933, guid: a5774a1e2395ce64bb7ce44c76908b75, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -708,9 +708,9 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 0
+  m_CurrentEditor: 1
   m_LayerEditor:
-    m_SelectedLayerIndex: 1
+    m_SelectedLayerIndex: 0
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -741,21 +741,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 14a9ffff30faffff48fbffff88570000
+      m_ExpandedIDs: 64f0ffff4cfbffffde480000f6480000224900005e490000884900008e490000b4490000d8490000164a0000304a00005c4a0000864a00009a4a0000c04a00003e4b0000484b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: SM_Magazine_M(Clone)
+        m_OriginalName: SM_Magazine_M(Clone)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -19474
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 10}
       m_SearchString: 
@@ -803,22 +803,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/TestingScene
+    - Assets/Prefabs/DemoWeapon
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/TestingScene
+  - Assets/Prefabs/DemoWeapon
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity\Character(animation & movement)
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 65}
-    m_SelectedIDs: 32480000
-    m_LastClickedID: 18482
-    m_ExpandedIDs: 00000000304800003248000034480000364800004648000000ca9a3b
+    scrollPos: {x: 0, y: 45}
+    m_SelectedIDs: 54480000
+    m_LastClickedID: 18516
+    m_ExpandedIDs: 00000000304800003448000036480000464800004848000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

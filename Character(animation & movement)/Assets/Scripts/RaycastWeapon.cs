@@ -19,7 +19,6 @@ public class RaycastWeapon : MonoBehaviour
     public float bulletSpeed = 1000f;
     public float bulletDrop = 0.0f;
     public int maxBounces = 0;
-    public bool debug = false;
     public float MaxlifeTime = 3.0f;
 
     public ParticleSystem MuzzleFlash;
@@ -27,10 +26,15 @@ public class RaycastWeapon : MonoBehaviour
     public TrailRenderer tracerEffect;
     public string weaponName;
 
+    public int ammoCount;
+    public int clipSize = 30;
+    bool reloading = false;
+
     public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public Transform raycastTarget;
     public WeaponRecoil recoil;
+    public GameObject magazine;
      
     Ray ray;
     RaycastHit hitInfo;
@@ -39,7 +43,13 @@ public class RaycastWeapon : MonoBehaviour
 
     private void Awake()
     {
+        ammoCount = clipSize;
         recoil = GetComponent<WeaponRecoil>();
+    }
+
+    public void SetReloading(bool value)
+    {
+        reloading = value;
     }
 
     Vector3 GetPosition(Bullet bullet)
@@ -164,6 +174,11 @@ public class RaycastWeapon : MonoBehaviour
     }
     private void FireBullet()
     {
+        if (ammoCount <=0 || reloading)
+        {
+            return;
+        }
+        ammoCount--;
         MuzzleFlash.Emit(1);
 
         Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;

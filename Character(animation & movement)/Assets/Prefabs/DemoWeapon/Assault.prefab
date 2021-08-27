@@ -221,12 +221,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3926016983760923813}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0855, y: -0.0215, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.45550007, y: -0.090500005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7113693399989011295}
-  m_RootOrder: 3
+  m_Father: {fileID: 6688681729138025885}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9042204143005049984
 MeshFilter:
@@ -330,7 +330,6 @@ Transform:
   - {fileID: 5288964808907260405}
   - {fileID: 5178833184281069699}
   - {fileID: 2708634979494910351}
-  - {fileID: 11077020174687926}
   m_Father: {fileID: 6688681729138025885}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -464,6 +463,7 @@ Transform:
   - {fileID: 6691715553946045191}
   - {fileID: 6688681730432653362}
   - {fileID: 8650208790064362617}
+  - {fileID: 11077020174687926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -485,16 +485,18 @@ MonoBehaviour:
   bulletSpeed: 100
   bulletDrop: 0
   maxBounces: 0
-  debug: 0
   MaxlifeTime: 3
   MuzzleFlash: {fileID: 6778688809960061513}
   HitEffect: {fileID: 8846785799733356511}
   tracerEffect: {fileID: 578642164407161238, guid: 094ab8f90ea9ffb41ac7b132b4a50deb, type: 3}
   weaponName: rifle
+  ammoCount: 0
+  clipSize: 30
   weaponAnimation: {fileID: 7400000, guid: 230e3afe1e867a44eb94612e024c1af4, type: 2}
   raycastOrigin: {fileID: 6688681730432653362}
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
+  magazine: {fileID: 3926016983760923813}
 --- !u!114 &-1660624149296848716
 MonoBehaviour:
   m_ObjectHideFlags: 0

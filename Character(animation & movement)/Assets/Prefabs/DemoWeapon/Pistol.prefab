@@ -55,16 +55,18 @@ MonoBehaviour:
   bulletSpeed: 100
   bulletDrop: 0
   maxBounces: 0
-  debug: 0
   MaxlifeTime: 3
   MuzzleFlash: {fileID: 6778688809960061513}
   HitEffect: {fileID: 8846785799733356511}
   tracerEffect: {fileID: 578642164407161238, guid: 094ab8f90ea9ffb41ac7b132b4a50deb, type: 3}
   weaponName: pistol
+  ammoCount: 0
+  clipSize: 15
   weaponAnimation: {fileID: 7400000, guid: b182a3e8fba50ad4ba714fc6196164f8, type: 2}
   raycastOrigin: {fileID: 6688681730432653362}
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
+  magazine: {fileID: 0}
 --- !u!114 &-3988498971023072759
 MonoBehaviour:
   m_ObjectHideFlags: 0

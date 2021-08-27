@@ -32,6 +32,11 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
+    public RaycastWeapon GetActiveWeapon()
+    {
+        return GetWeapon(activeweaponIndex);
+    }
+
     RaycastWeapon GetWeapon(int index)
     {
         if (index < 0 || index >= weaponSlot.Length)
@@ -80,6 +85,8 @@ public class ActiveWeapon : MonoBehaviour
         equiped_weapons[weaponSlotIndex] = weapon;
 
         SetActiveWeapon(newWeapon.weaponSlot);
+
+        //update UI ammo count
     }
 
     void ToggleActiveWeapon()

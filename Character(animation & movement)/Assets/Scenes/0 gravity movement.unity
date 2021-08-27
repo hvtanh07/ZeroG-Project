@@ -1026,6 +1026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514197412}
   - component: {fileID: 514197413}
+  - component: {fileID: 514197414}
   m_Layer: 0
   m_Name: ----Rig Layers----
   m_TagString: Untagged
@@ -1070,6 +1071,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &514197414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514197411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d844ff9426ae641a5b40327d270bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &547540298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741164516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.23, y: 0.3, z: 1.45}
+  m_LocalPosition: {x: -0.05, y: 0.3, z: -0.1}
   m_LocalScale: {x: 1.1111381, y: 0.28900006, z: 0.099361174}
   m_Children:
   - {fileID: 4497427988749915094}
@@ -3457,7 +3470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006863864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.913, y: 0.3, z: 1.311}
+  m_LocalPosition: {x: 0.573, y: 0.3, z: 1.044}
   m_LocalScale: {x: 1.1111381, y: 0.28900006, z: 0.099361174}
   m_Children:
   - {fileID: 4181216745545836796}
@@ -4097,6 +4110,7 @@ GameObject:
   - component: {fileID: 919132148815924769}
   - component: {fileID: 1114049826}
   - component: {fileID: 919132148815924770}
+  - component: {fileID: 919132148815924771}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4142,6 +4156,23 @@ MonoBehaviour:
   - {fileID: 432084106}
   rigController: {fileID: 514197413}
   playerCamera: {fileID: 707469229}
+  isHolstered: 0
+--- !u!114 &919132148815924771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148815924768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd10c6dc0d5c6ff419388274da1853da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigController: {fileID: 514197413}
+  animationEvents: {fileID: 514197414}
+  activeWeapon: {fileID: 919132148815924770}
+  leftHand: {fileID: 6502182839281198770}
 --- !u!4 &1031632034685464263
 Transform:
   m_ObjectHideFlags: 0
