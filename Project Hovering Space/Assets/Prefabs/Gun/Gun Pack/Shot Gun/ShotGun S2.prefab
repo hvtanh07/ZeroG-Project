@@ -59,7 +59,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8085250491747741072}
+  - {fileID: 2965816820239628313}
   - {fileID: 1651433076237306829}
   - {fileID: 3287617425582619589}
   m_Father: {fileID: 0}
@@ -90,7 +90,6 @@ MonoBehaviour:
   weaponName: 
   ammoCount: 0
   clipSize: 30
-  weaponAnimation: {fileID: 0}
   raycastOrigin: {fileID: 0}
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
@@ -142,7 +141,7 @@ Transform:
   m_Father: {fileID: 931519168393465089}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5547085054527995111
+--- !u!1001 &1578250692314474862
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -199,8 +198,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8722909721c3437449068cb73aba4604, type: 3}
---- !u!4 &8085250491747741072 stripped
+--- !u!4 &2965816820239628313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4381896934758666615, guid: 8722909721c3437449068cb73aba4604, type: 3}
-  m_PrefabInstance: {fileID: 5547085054527995111}
+  m_PrefabInstance: {fileID: 1578250692314474862}
   m_PrefabAsset: {fileID: 0}

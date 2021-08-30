@@ -30,7 +30,7 @@ public class RaycastWeapon : MonoBehaviour
     public int clipSize = 30;
     bool reloading = false;
 
-    public AnimationClip weaponAnimation;
+    //public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public Transform raycastTarget;
     public WeaponRecoil recoil;
@@ -184,11 +184,6 @@ public class RaycastWeapon : MonoBehaviour
         Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;
         var bullet = createBullet(raycastOrigin.position, velocity);
         bullets.Add(bullet);
-        //ray.origin = raycastOrigin.position;
-        //ray.direction = raycastTarget.position - raycastOrigin.position;
-
-        //var tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
-        //tracer.AddPosition(ray.origin);
 
         recoil.GenerateRecoid(weaponName);
     }

@@ -24,8 +24,11 @@ public class ReloadWeapon : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
             {
-                rigController.SetTrigger("reload_weapon");
-                weapon.SetReloading(true);
+                if (!activeWeapon.isHolstered)
+                {
+                    rigController.SetTrigger("reload_weapon");
+                    weapon.SetReloading(true);
+                }               
             }
             if (weapon.isFiring)
             {
@@ -52,6 +55,9 @@ public class ReloadWeapon : MonoBehaviour
                 break;
             case "attach_magazine":
                 AttachMagazine();
+                break;
+            case "endOf_Reload":
+                EndReload();
                 break;
         }
     }
@@ -80,6 +86,11 @@ public class ReloadWeapon : MonoBehaviour
         Destroy(magazineHand);
         weapon.ammoCount = weapon.clipSize;
         rigController.ResetTrigger("reload_weapon");
+        //update UI ammo count
+    }
+    void EndReload()
+    {
+        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
         weapon.SetReloading(false);
         //update UI ammo count
     }

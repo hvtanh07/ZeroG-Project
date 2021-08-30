@@ -61,7 +61,6 @@ MonoBehaviour:
   weaponName: 
   ammoCount: 0
   clipSize: 30
-  weaponAnimation: {fileID: 0}
   raycastOrigin: {fileID: 6070021028599895912}
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
