@@ -82,7 +82,8 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   cameraShake: {fileID: 0}
   rigController: {fileID: 0}
-  recoilPatern: []
+  recoilPatern:
+  - {x: 0, y: 0}
   duration: 0.1
 --- !u!114 &5898080262998052388
 MonoBehaviour:

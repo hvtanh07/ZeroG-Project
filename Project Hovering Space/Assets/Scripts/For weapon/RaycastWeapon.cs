@@ -60,6 +60,7 @@ public class RaycastWeapon : MonoBehaviour
 
     Bullet createBullet(Vector3 position, Vector3 velocity)
     {
+        //Debug.Log("X:" + position.x + " Y:" + position.y + " Z:" + position.z);
         Bullet bullet = new Bullet();
         bullet.initialPosition = position;
         bullet.initialVelocity = velocity;
@@ -138,9 +139,6 @@ public class RaycastWeapon : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, distance))
         {
-            Debug.Log(hitInfo.collider.gameObject.name);
-            //Instantiate(HitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-            //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
             HitEffect.transform.position = hitInfo.point;
             HitEffect.transform.forward = hitInfo.normal;
             HitEffect.Emit(1);
@@ -180,7 +178,7 @@ public class RaycastWeapon : MonoBehaviour
         }
         ammoCount--;
         MuzzleFlash.Emit(1);
-
+        Debug.Log("X:" + raycastOrigin.position.x + " Y:" + raycastOrigin.position.y + " Z:" + raycastOrigin.position.z);
         Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;
         var bullet = createBullet(raycastOrigin.position, velocity);
         bullets.Add(bullet);

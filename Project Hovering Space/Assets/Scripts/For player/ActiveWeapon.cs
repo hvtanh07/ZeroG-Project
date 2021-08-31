@@ -132,13 +132,13 @@ public class ActiveWeapon : MonoBehaviour
         if (weapon)
         {
             rigController.SetBool("holster_weapon", true);
-            do
-            {
-                yield return new WaitForEndOfFrame();
-            } while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+            //do
+            //{
+            //    yield return new WaitForEndOfFrame();
+            //} while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
 
             //Used when RigLayer animator use Animate Physics Update Mode.
-            //yield return new WaitForSeconds(rigController.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(rigController.GetCurrentAnimatorStateInfo(0).length);
         }
 
     }
@@ -150,13 +150,13 @@ public class ActiveWeapon : MonoBehaviour
         {
             rigController.SetBool("holster_weapon", false);
             rigController.Play("Equip_" + weapon.weaponName);
-            do
-            {
-                yield return new WaitForEndOfFrame();
-            } while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+            //do
+            //{
+            //    yield return new WaitForEndOfFrame();
+            //} while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
 
             //Used when RigLayer animator use Animate Physics Update Mode.
-            //yield return new WaitForSeconds(rigController.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(rigController.GetCurrentAnimatorStateInfo(0).length);
             isHolstered = false;
         }
     }

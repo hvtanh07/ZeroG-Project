@@ -73,6 +73,7 @@ public class ReloadWeapon : MonoBehaviour
         GameObject droppedMagazine = Instantiate(magazineHand, magazineHand.transform.position, magazineHand.transform.rotation);
         droppedMagazine.AddComponent<Rigidbody>();
         droppedMagazine.AddComponent<BoxCollider>();
+        Destroy(droppedMagazine, 5);
         magazineHand.SetActive(false);
     }
     void RefillMagazine()
