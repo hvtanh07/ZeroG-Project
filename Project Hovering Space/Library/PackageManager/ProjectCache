@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659172508178351
-    m_Hash: 3224675800
+      ticks: 637660729234686893
+    m_Hash: 484303800
   m_LockFileStatus:
     m_FilePath: D:/Github/Unity-Hovering-Space-Project/Project Hovering Space/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659172509199311
-    m_Hash: 4215106771
+      ticks: 637660729234696870
+    m_Hash: 1082119993
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
