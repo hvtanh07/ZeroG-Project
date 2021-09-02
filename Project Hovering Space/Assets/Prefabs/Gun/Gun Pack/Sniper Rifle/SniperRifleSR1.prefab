@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSlot: 0
   isFiring: 0
-  fireRate: 11
+  fireRate: 1
   bulletSpeed: 1000
   bulletDrop: 0
   maxBounces: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   MuzzleFlash: {fileID: 8394865526250768456}
   HitEffect: {fileID: 3128124971090673851}
   tracerEffect: {fileID: 3983254784631264069, guid: 069d142a959da7b48aff2667423dbade, type: 3}
-  weaponName: 
+  weaponName: SR1
   ammoCount: 0
   clipSize: 30
   raycastOrigin: {fileID: 6125826215001719538}
@@ -112,7 +112,8 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   cameraShake: {fileID: 0}
   rigController: {fileID: 0}
-  recoilPatern: []
+  recoilPatern:
+  - {x: 0, y: 0}
   duration: 0.1
 --- !u!114 &8005824278246289242
 MonoBehaviour:

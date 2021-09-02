@@ -61,7 +61,6 @@ MonoBehaviour:
   weaponName: 
   ammoCount: 0
   clipSize: 30
-  weaponAnimation: {fileID: 0}
   raycastOrigin: {fileID: 1739480815020384149}
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
@@ -81,7 +80,8 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   cameraShake: {fileID: 0}
   rigController: {fileID: 0}
-  recoilPatern: []
+  recoilPatern:
+  - {x: 0, y: 0}
   duration: 0.1
 --- !u!114 &245614592353053238
 MonoBehaviour:
