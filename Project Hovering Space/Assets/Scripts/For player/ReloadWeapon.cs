@@ -60,22 +60,37 @@ public class ReloadWeapon : MonoBehaviour
             case "detach_magazinefromGun":
                 DettachMagazineandDrop();
                 break;
+            case "Get_pos":
+                SetPosforMagonHand();
+                break;
         }
     }
 
     void DettachMagazine()
     {
+        //create a mag on player hand
         RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
         magazineHand = Instantiate(weapon.magazine, leftHand, true);
         weapon.magazine.SetActive(false);
     }
-    void DettachMagazineandDrop()
+    void SetPosforMagonHand()//replace dettach mag & drop mag
     {
+        //create Magaznie on player hand
         RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        magazineHand = Instantiate(weapon.magazine, leftHand, true);
+        magazineHand.SetActive(false);      
+    }
+    void DettachMagazineandDrop()//replace dettach mag & drop mag
+    {
+        //create Magaznie on player hand
+        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        //create fake mag to drop out
         GameObject droppedMagazine = Instantiate(weapon.magazine, weapon.magazine.transform.position, weapon.magazine.transform.rotation);
         weapon.magazine.SetActive(false);
         droppedMagazine.AddComponent<Rigidbody>();
+        droppedMagazine.GetComponent<Rigidbody>().useGravity = false;
         droppedMagazine.AddComponent<BoxCollider>();
+
         Destroy(droppedMagazine, 5);
         //magazineHand.SetActive(false);
     }
@@ -83,6 +98,7 @@ public class ReloadWeapon : MonoBehaviour
     {
         GameObject droppedMagazine = Instantiate(magazineHand, magazineHand.transform.position, magazineHand.transform.rotation);
         droppedMagazine.AddComponent<Rigidbody>();
+        droppedMagazine.GetComponent<Rigidbody>().useGravity = false;
         droppedMagazine.AddComponent<BoxCollider>();
         Destroy(droppedMagazine, 5);
         magazineHand.SetActive(false);
