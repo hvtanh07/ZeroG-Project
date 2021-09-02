@@ -18,6 +18,7 @@ public class ActiveWeapon : MonoBehaviour
     RaycastWeapon[] equiped_weapons = new RaycastWeapon[2];
     int activeweaponIndex;
     public bool isHolstered = false;
+    int Holsterindex;
 
     RaycastWeapon weapon;
 
@@ -52,7 +53,7 @@ public class ActiveWeapon : MonoBehaviour
         var weapon = GetWeapon(activeweaponIndex);
         if (weapon)
         {
-            weapon.UpdateWeapon(Time.deltaTime, isHolstered);        
+            weapon.UpdateWeapon(Time.deltaTime, isHolstered);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -92,7 +93,6 @@ public class ActiveWeapon : MonoBehaviour
     void ToggleActiveWeapon()
     {
         bool isHolsterd = rigController.GetBool("holster_weapon");
-        //rigController.SetBool("holster_weapon", !isHolsterd);
         if (isHolsterd)
         {
             StartCoroutine(ActivateWeapon(activeweaponIndex));

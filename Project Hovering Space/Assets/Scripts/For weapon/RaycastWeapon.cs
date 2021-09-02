@@ -60,7 +60,6 @@ public class RaycastWeapon : MonoBehaviour
 
     Bullet createBullet(Vector3 position, Vector3 velocity)
     {
-        //Debug.Log("X:" + position.x + " Y:" + position.y + " Z:" + position.z);
         Bullet bullet = new Bullet();
         bullet.initialPosition = position;
         bullet.initialVelocity = velocity;
@@ -86,15 +85,15 @@ public class RaycastWeapon : MonoBehaviour
             if (!holstered)
                 StartFiring();
         }
-        if (isFiring)
-        {
-            UpdateFiring(deltaTime);
-        }
-        UpdateBullets(deltaTime);
         if (Input.GetButtonUp("Fire1"))
         {
             StopFiring();
         }
+        if (isFiring)
+        {
+            UpdateFiring(deltaTime);
+        }
+        UpdateBullets(deltaTime);    
     }
      
     public void UpdateFiring(float deltaTime)
@@ -167,7 +166,8 @@ public class RaycastWeapon : MonoBehaviour
         //{
         //    bullet.tracer.transform.position = end;
         //}
-        bullet.tracer.transform.position = end;
+        if (bullet.tracer)
+            bullet.tracer.transform.position = end;
     
     }
     private void FireBullet()
