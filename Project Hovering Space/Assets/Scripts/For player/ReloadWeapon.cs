@@ -57,9 +57,6 @@ public class ReloadWeapon : MonoBehaviour
             case "endOf_Reload":
                 EndReload();
                 break;
-            case "detach_magazinefromGun":
-                DettachMagazineandDrop();
-                break;
         }
     }
 
@@ -69,20 +66,12 @@ public class ReloadWeapon : MonoBehaviour
         magazineHand = Instantiate(weapon.magazine, leftHand, true);
         weapon.magazine.SetActive(false);
     }
-    void DettachMagazineandDrop()
-    {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
-        GameObject droppedMagazine = Instantiate(weapon.magazine, weapon.magazine.transform.position, weapon.magazine.transform.rotation);
-        weapon.magazine.SetActive(false);
-        droppedMagazine.AddComponent<Rigidbody>();
-        droppedMagazine.AddComponent<BoxCollider>();
-        Destroy(droppedMagazine, 5);
-        //magazineHand.SetActive(false);
-    }
     void DropMagazine()
     {
         GameObject droppedMagazine = Instantiate(magazineHand, magazineHand.transform.position, magazineHand.transform.rotation);
         droppedMagazine.AddComponent<Rigidbody>();
+        droppedMagazine.GetComponent<Rigidbody>().useGravity = false;
+        droppedMagazine.GetComponent<Rigidbody>().AddForce(-6f, -2f, 4f);
         droppedMagazine.AddComponent<BoxCollider>();
         Destroy(droppedMagazine, 5);
         magazineHand.SetActive(false);
