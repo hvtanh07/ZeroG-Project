@@ -9,10 +9,13 @@ public class ActiveWeapon : MonoBehaviour
     {
         Primary = 0,
         Secondary = 1,
-    }
+        Grenade = 2,
+    }    
+    public Transform[] weaponSlot;
+
+    [Space(10)]
     [Header("Properties")]
     public Transform crosshairTarget;
-    public Transform[] weaponSlot;
     public Animator rigController;
     public Cinemachine.CinemachineFreeLook playerCamera;
 

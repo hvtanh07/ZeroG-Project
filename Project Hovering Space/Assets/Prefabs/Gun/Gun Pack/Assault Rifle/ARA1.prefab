@@ -84,8 +84,7 @@ MonoBehaviour:
   isFiring: 0
   fireRate: 11
   bulletsPerShot: 1
-  minSpread: -2
-  maxSpread: 2
+  angleSpread: 1
   weaponName: ARA1
   ammoCount: 30
   clipSize: 30

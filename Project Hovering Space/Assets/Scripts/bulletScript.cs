@@ -10,16 +10,16 @@ public class bulletScript : MonoBehaviour
     TrailRenderer tracer;
     int bounce;
 
-    [Header("Properties")]
-    [Range(0f, 1f)]
+    [Header("Properties")]   
     public RaycastWeapon.bulletType typeofBullet;
+    [Range(0f, 1f)]
     public float ricochetChance;
     public float minRicochetAngle;
     public float bulletSpeed = 1000f;
     public float bulletDrop = 0.0f;
     public int maxBounces = 0;
     public float MaxlifeTime = 3.0f;
-
+    [Space(10)]
     [Header("Effect")]
     public ParticleSystem HitEffect;
     public TrailRenderer tracerEffect;
@@ -70,7 +70,6 @@ public class bulletScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, distance))
         {
-            Debug.Log("hit");
             //Destroy(tracer);
             HitEffect.transform.position = hitInfo.point;
             HitEffect.transform.forward = hitInfo.normal;

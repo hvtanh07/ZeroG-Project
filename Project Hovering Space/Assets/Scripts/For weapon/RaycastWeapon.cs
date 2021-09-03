@@ -11,28 +11,27 @@ public class RaycastWeapon : MonoBehaviour
         Greanade = 2,
     }
     [Header("Properties")]
+    public string weaponName;
     public ActiveWeapon.WeaponSlot weaponSlot;
-
     public bool isFiring = false;
     public float fireRate = 11f;
     public int bulletsPerShot = 1;//5 
-    public float minSpread = -1.0f;//-5 for shotgun
-    public float maxSpread = 1.0f;//5
-    public string weaponName;
+    public float angleSpread = 1.0f;//5   
     public int ammoCount;
+    [Range(0, 100)]
     public int clipSize = 30;
     bool reloading = false;
-
+    [Space(10)]
+    [Header("Location & Constraint object")]
     //public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public Transform raycastTarget;
     public bulletScript bullets;
     public WeaponRecoil recoil;
     public GameObject magazine;
-
+    [Space(10)]
     [Header("Effect")]
     public ParticleSystem MuzzleFlash;
-    public ParticleSystem HitEffect;
 
     float acumulatedTime;
 
@@ -93,30 +92,22 @@ public class RaycastWeapon : MonoBehaviour
         ammoCount--;
         MuzzleFlash.Emit(1);
         Vector3 angle = (raycastTarget.position - raycastOrigin.position).normalized;
-        if (1 == bulletsPerShot)
+        for (int i = 0; i < bulletsPerShot; i++)
         {
             bulletScript bulletout = Instantiate(bullets, raycastOrigin.position, raycastOrigin.transform.rotation);
-            bulletout.initVarible(raycastOrigin.position, angle);
+            bulletout.initVarible(raycastOrigin.position, (angle += AddNoiseOnAngle()).normalized);
         }
-        else
-        {
-            for(int i = 0;i< bulletsPerShot; i++)
-            {
-                bulletScript bulletout = Instantiate(bullets, raycastOrigin.position, raycastOrigin.transform.rotation);
-                bulletout.initVarible(raycastOrigin.position, angle += AddNoiseOnAngle(minSpread, maxSpread));
-            }
-        }
-
         recoil.GenerateRecoid(weaponName);
     }
 
-    Vector3 AddNoiseOnAngle(float min, float max)
+    Vector3 AddNoiseOnAngle()
     {
         // Find random angle between min & max inclusive
-        float xNoise = Random.Range(min, max);
-        float yNoise = Random.Range(min, max);
-        float zNoise = Random.Range(min, max);
+        float xNoise = Random.Range(-angleSpread, angleSpread);
+        float yNoise = Random.Range(-angleSpread, angleSpread);
+        float zNoise = Random.Range(-angleSpread, angleSpread);
 
+        Debug.Log(xNoise + " " + yNoise + " " + zNoise);
         // Convert Angle to Vector3
         return new Vector3(
           Mathf.Sin(2 * Mathf.PI * xNoise / 360),
