@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
 {
-    class Bullet
-    {
-        public float time;
-        public Vector3 initialPosition;
-        public Vector3 initialVelocity;
-        public TrailRenderer tracer;
-        public int bounce;
-    }
-
     public ActiveWeapon.WeaponSlot weaponSlot;
     public bool isFiring = false;
     public float fireRate = 11f;
-    public float bulletSpeed = 1000f;
-    public float bulletDrop = 0.0f;
-    public int maxBounces = 0;
-    public float MaxlifeTime = 3.0f;
 
     public ParticleSystem MuzzleFlash;
     public ParticleSystem HitEffect;
-    public TrailRenderer tracerEffect;
     public string weaponName;
 
     public int ammoCount;
@@ -33,13 +19,11 @@ public class RaycastWeapon : MonoBehaviour
     //public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public Transform raycastTarget;
+    public bulletScript bullets;
     public WeaponRecoil recoil;
     public GameObject magazine;
      
-    Ray ray;
-    RaycastHit hitInfo;
     float acumulatedTime;
-    List<Bullet> bullets = new List<Bullet>();
 
     private void Awake()
     {
@@ -50,24 +34,6 @@ public class RaycastWeapon : MonoBehaviour
     public void SetReloading(bool value)
     {
         reloading = value;
-    }
-
-    Vector3 GetPosition(Bullet bullet)
-    {
-        Vector3 gravity = Vector3.down * bulletDrop;
-        return bullet.initialPosition + bullet.initialVelocity * bullet.time + 0.5f * gravity * bullet.time * bullet.time;
-    }
-
-    Bullet createBullet(Vector3 position, Vector3 velocity)
-    {
-        Bullet bullet = new Bullet();
-        bullet.initialPosition = position;
-        bullet.initialVelocity = velocity;
-        bullet.time = 0.0f;
-        bullet.tracer = Instantiate(tracerEffect, position, Quaternion.identity);
-        bullet.tracer.AddPosition(position);
-        bullet.bounce = maxBounces;
-        return bullet;
     }
 
     public void StartFiring()
@@ -93,7 +59,6 @@ public class RaycastWeapon : MonoBehaviour
         {
             UpdateFiring(deltaTime);
         }
-        UpdateBullets(deltaTime);    
     }
      
     public void UpdateFiring(float deltaTime)
@@ -107,69 +72,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-    public void UpdateBullets(float deltaTime)
-    {       
-        SimulateBullets(deltaTime);
-        Destroybullets();
-    }
-
-    void SimulateBullets(float deltaTime)
-    {
-        bullets.ForEach(bullet =>
-        {
-            Vector3 p0 = GetPosition(bullet);
-            bullet.time += deltaTime;
-            Vector3 p1 = GetPosition(bullet);
-            RayCastSegment(p0, p1, bullet);
-        });
-    }
-
-    void Destroybullets()
-    {
-        bullets.RemoveAll(bullet => bullet.time >= MaxlifeTime);
-    }
-
-    void RayCastSegment(Vector3 start, Vector3 end, Bullet bullet)
-    {
-        Vector3 direction = end - start;
-        float distance = direction.magnitude;
-        ray.origin = start;
-        ray.direction = direction;
-
-        if (Physics.Raycast(ray, out hitInfo, distance))
-        {
-            HitEffect.transform.position = hitInfo.point;
-            HitEffect.transform.forward = hitInfo.normal;
-            HitEffect.Emit(1);
-
-            //bullet.tracer.transform.position = hitInfo.point;
-            bullet.time = MaxlifeTime;
-            end = hitInfo.point;
-
-            // Bullet ricochet;
-            if (bullet.bounce > 0)
-            {
-                bullet.time = 0;
-                bullet.initialPosition = hitInfo.point;
-                bullet.initialVelocity = Vector3.Reflect(bullet.initialVelocity, hitInfo.normal);
-                bullet.bounce--;
-            }
-
-            //colision impulse
-            var rb2d = hitInfo.collider.GetComponent<Rigidbody>();
-            if (rb2d)
-            {
-                rb2d.AddForceAtPosition(ray.direction * 20, hitInfo.point, ForceMode.Impulse);
-            }
-        }
-        //else
-        //{
-        //    bullet.tracer.transform.position = end;
-        //}
-        if (bullet.tracer)
-            bullet.tracer.transform.position = end;
-    
-    }
+   
     private void FireBullet()
     {
         if (ammoCount <=0 || reloading)
@@ -178,10 +81,11 @@ public class RaycastWeapon : MonoBehaviour
         }
         ammoCount--;
         MuzzleFlash.Emit(1);
-        Debug.Log("X:" + raycastOrigin.position.x + " Y:" + raycastOrigin.position.y + " Z:" + raycastOrigin.position.z);
-        Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;
-        var bullet = createBullet(raycastOrigin.position, velocity);
-        bullets.Add(bullet);
+        //Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;
+        bulletScript bulletout = Instantiate(bullets, raycastOrigin.position, raycastOrigin.transform.rotation);
+        bulletout.initVarible(raycastOrigin.position, raycastTarget.position);
+        //var bullet = createBullet(raycastOrigin.position, velocity);
+        //bullets.Add(bullet);
 
         recoil.GenerateRecoid(weaponName);
     }

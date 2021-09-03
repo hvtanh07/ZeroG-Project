@@ -83,18 +83,14 @@ MonoBehaviour:
   weaponSlot: 1
   isFiring: 0
   fireRate: 1
-  bulletSpeed: 1000
-  bulletDrop: 0
-  maxBounces: 0
-  MaxlifeTime: 3
   MuzzleFlash: {fileID: 8299151199322892346}
   HitEffect: {fileID: 6522084185353022323}
-  tracerEffect: {fileID: 3983254784631264069, guid: 069d142a959da7b48aff2667423dbade, type: 3}
   weaponName: Pistol
   ammoCount: 15
   clipSize: 15
   raycastOrigin: {fileID: 6711183284838858086}
   raycastTarget: {fileID: 0}
+  bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 4766858160826313625}
 --- !u!114 &4566500924365681686

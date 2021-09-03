@@ -53,18 +53,14 @@ MonoBehaviour:
   weaponSlot: 1
   isFiring: 0
   fireRate: 11
-  bulletSpeed: 1000
-  bulletDrop: 0
-  maxBounces: 0
-  MaxlifeTime: 3
   MuzzleFlash: {fileID: 5566886519296298101}
   HitEffect: {fileID: 1763339710505802672}
-  tracerEffect: {fileID: 3983254784631264069, guid: 069d142a959da7b48aff2667423dbade, type: 3}
   weaponName: SMG2
   ammoCount: 0
   clipSize: 30
   raycastOrigin: {fileID: 1894310821000479377}
   raycastTarget: {fileID: 0}
+  bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 493217003304731749}
 --- !u!114 &2731842106033496706
