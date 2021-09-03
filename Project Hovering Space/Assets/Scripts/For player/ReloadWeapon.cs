@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ReloadWeapon : MonoBehaviour
 {
+    [Header("Properties")]
     public Animator rigController;
     public WeaponAnimationEvents animationEvents;
     public ActiveWeapon activeWeapon;

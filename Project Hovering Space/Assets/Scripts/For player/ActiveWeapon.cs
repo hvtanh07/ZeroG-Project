@@ -10,6 +10,7 @@ public class ActiveWeapon : MonoBehaviour
         Primary = 0,
         Secondary = 1,
     }
+    [Header("Properties")]
     public Transform crosshairTarget;
     public Transform[] weaponSlot;
     public Animator rigController;

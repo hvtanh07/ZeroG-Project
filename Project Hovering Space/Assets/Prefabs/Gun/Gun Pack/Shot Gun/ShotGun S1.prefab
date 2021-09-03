@@ -49,20 +49,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSlot: 0
+  typeofBullet: 1
   isFiring: 0
   fireRate: 11
-  bulletSpeed: 1000
-  bulletDrop: 0
-  maxBounces: 0
-  MaxlifeTime: 3
   MuzzleFlash: {fileID: 0}
   HitEffect: {fileID: 0}
-  tracerEffect: {fileID: 0}
-  weaponName: 
+  weaponName: S1
   ammoCount: 0
   clipSize: 30
   raycastOrigin: {fileID: 8615862857107996041}
   raycastTarget: {fileID: 0}
+  bullets: {fileID: 0}
   recoil: {fileID: 0}
   magazine: {fileID: 5721736972063008362}
 --- !u!114 &6935860601283015714

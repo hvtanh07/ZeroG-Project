@@ -78,20 +78,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSlot: 0
+  typeofBullet: 1
   isFiring: 0
   fireRate: 11
-  bulletSpeed: 1000
-  bulletDrop: 0
-  maxBounces: 0
-  MaxlifeTime: 3
   MuzzleFlash: {fileID: 0}
   HitEffect: {fileID: 0}
-  tracerEffect: {fileID: 0}
-  weaponName: 
+  weaponName: S2
   ammoCount: 0
   clipSize: 30
-  raycastOrigin: {fileID: 0}
+  raycastOrigin: {fileID: 1651433076237306829}
   raycastTarget: {fileID: 0}
+  bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 8384182766379841617}
 --- !u!114 &8441311201649140514

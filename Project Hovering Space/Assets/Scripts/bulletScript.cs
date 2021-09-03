@@ -10,7 +10,9 @@ public class bulletScript : MonoBehaviour
     TrailRenderer tracer;
     int bounce;
 
+    [Header("Properties")]
     [Range(0f, 1f)]
+    public RaycastWeapon.bulletType typeofBullet;
     public float ricochetChance;
     public float minRicochetAngle;
     public float bulletSpeed = 1000f;
@@ -18,6 +20,7 @@ public class bulletScript : MonoBehaviour
     public int maxBounces = 0;
     public float MaxlifeTime = 3.0f;
 
+    [Header("Effect")]
     public ParticleSystem HitEffect;
     public TrailRenderer tracerEffect;
 
@@ -40,10 +43,10 @@ public class bulletScript : MonoBehaviour
         Vector3 gravity = Vector3.down * bulletDrop;
         return initialPosition + initialVelocity * time + 0.5f * gravity * time * time;
     }
-    public void initVarible(Vector3 position, Vector3 target)
+    public void initVarible(Vector3 position, Vector3 angle)
     {
         initialPosition = position;
-        initialVelocity = (target - position).normalized * bulletSpeed;
+        initialVelocity = angle * bulletSpeed;
         time = 0.0f;
         tracer = Instantiate(tracerEffect, position, Quaternion.identity);
         tracer.AddPosition(position);

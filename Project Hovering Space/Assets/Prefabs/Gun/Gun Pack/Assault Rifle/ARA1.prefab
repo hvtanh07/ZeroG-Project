@@ -82,9 +82,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSlot: 0
   isFiring: 0
-  fireRate: 25
-  MuzzleFlash: {fileID: 1666877320424301890}
-  HitEffect: {fileID: 6784379367740067681}
+  fireRate: 11
+  bulletsPerShot: 1
+  minSpread: -2
+  maxSpread: 2
   weaponName: ARA1
   ammoCount: 30
   clipSize: 30
@@ -93,6 +94,8 @@ MonoBehaviour:
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 3121347606846126207}
+  MuzzleFlash: {fileID: 1666877320424301890}
+  HitEffect: {fileID: 6784379367740067681}
 --- !u!114 &8273530570623694752
 MonoBehaviour:
   m_ObjectHideFlags: 0
