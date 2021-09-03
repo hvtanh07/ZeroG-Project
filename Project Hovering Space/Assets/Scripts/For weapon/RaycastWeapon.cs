@@ -34,9 +34,11 @@ public class RaycastWeapon : MonoBehaviour
     public ParticleSystem MuzzleFlash;
 
     float acumulatedTime;
+    Animator gunanimation;
 
     private void Awake()
     {
+        gunanimation = GetComponent<Animator>();
         ammoCount = clipSize;
         recoil = GetComponent<WeaponRecoil>();
     }
@@ -91,6 +93,7 @@ public class RaycastWeapon : MonoBehaviour
         }
         ammoCount--;
         MuzzleFlash.Emit(1);
+        gunanimation.Play(weaponName + "_recoil",0,0.0f);
         Vector3 angle = (raycastTarget.position - raycastOrigin.position).normalized;
         for (int i = 0; i < bulletsPerShot; i++)
         {

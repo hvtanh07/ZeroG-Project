@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7290255080394259244}
   - component: {fileID: 6935860601283015714}
   - component: {fileID: 1242886949659923765}
+  - component: {fileID: -4359008993244290934}
   m_Layer: 0
   m_Name: ShotGun S1
   m_TagString: Untagged
@@ -130,6 +131,25 @@ MonoBehaviour:
   m_UseImpactDirection: 0
   m_ScaleImpactWithMass: 0
   m_ScaleImpactWithSpeed: 0
+--- !u!95 &-4359008993244290934
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672334160702095451}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cff6b891665e9014895ed5a9c8b9a1cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8094663229697925654
 GameObject:
   m_ObjectHideFlags: 0
