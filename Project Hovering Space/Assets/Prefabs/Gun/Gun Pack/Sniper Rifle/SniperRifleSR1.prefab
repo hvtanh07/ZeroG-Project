@@ -80,19 +80,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: SR1
   weaponSlot: 0
   isFiring: 0
   fireRate: 1
-  MuzzleFlash: {fileID: 8394865526250768456}
-  HitEffect: {fileID: 3128124971090673851}
-  weaponName: SR1
+  bulletsPerShot: 1
+  angleSpread: 0
   ammoCount: 0
   clipSize: 30
   raycastOrigin: {fileID: 6125826215001719538}
   raycastTarget: {fileID: 0}
-  bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
+  bullets: {fileID: 2885054185156142561, guid: b39db5ff2b1eae2489ed396e7a9a812a, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 9065597253856059202}
+  MuzzleFlash: {fileID: 8394865526250768456}
 --- !u!114 &8708681263215313572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,11 +350,6 @@ PrefabInstance:
 --- !u!4 &3000799049357939485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 7630852274074504605}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3128124971090673851 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4796173765594762534, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
   m_PrefabInstance: {fileID: 7630852274074504605}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8521031090165650706

@@ -46,6 +46,13 @@ public class RaycastWeapon : MonoBehaviour
     public void SetReloading(bool value)
     {
         reloading = value;
+        Debug.Log("Reload");
+        if (reloading)
+        {
+            //Start reloading animation;
+            if (gunanimation)
+                gunanimation.Play(weaponName + "_reload", 0, 0.0f);
+        }
     }
 
     public void StartFiring()
@@ -84,7 +91,10 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-   
+    public void WeaponReload()
+    {
+        isFiring = false;
+    }
     private void FireBullet()
     {
         if (ammoCount <=0 || reloading)
@@ -93,7 +103,8 @@ public class RaycastWeapon : MonoBehaviour
         }
         ammoCount--;
         MuzzleFlash.Emit(1);
-        gunanimation.Play(weaponName + "_recoil",0,0.0f);
+        if(gunanimation)
+            gunanimation.Play(weaponName + "_recoil",0,0.0f);
         Vector3 angle = (raycastTarget.position - raycastOrigin.position).normalized;
         for (int i = 0; i < bulletsPerShot; i++)
         {
