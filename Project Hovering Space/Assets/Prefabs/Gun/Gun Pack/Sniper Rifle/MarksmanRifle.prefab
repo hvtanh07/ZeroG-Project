@@ -50,19 +50,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: DMR
   weaponSlot: 0
   isFiring: 0
   fireRate: 1
-  MuzzleFlash: {fileID: 3262971309743736303}
-  HitEffect: {fileID: 635999561697961999}
-  weaponName: DMR
+  bulletsPerShot: 1
+  angleSpread: 0.2
   ammoCount: 0
   clipSize: 30
   raycastOrigin: {fileID: 3478997971321381083}
   raycastTarget: {fileID: 0}
-  bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
+  bullets: {fileID: 2885054185156142561, guid: b39db5ff2b1eae2489ed396e7a9a812a, type: 3}
   recoil: {fileID: 0}
   magazine: {fileID: 1586009905396915836}
+  MuzzleFlash: {fileID: 3262971309743736303}
 --- !u!114 &2442426277016162397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,11 +355,6 @@ PrefabInstance:
 --- !u!4 &729066347725814697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 5358413412220888361}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &635999561697961999 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4796173765594762534, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
   m_PrefabInstance: {fileID: 5358413412220888361}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5521591710012860666

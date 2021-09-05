@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
 {
+
+    public enum bulletType
+    {
+        defaultType = 0,
+        Greanade = 2,
+    }
+    [Header("Properties")]
+    public string weaponName;
     public ActiveWeapon.WeaponSlot weaponSlot;
     public bool isFiring = false;
     public float fireRate = 11f;
-
-    public ParticleSystem MuzzleFlash;
-    public ParticleSystem HitEffect;
-    public string weaponName;
-
+    public int bulletsPerShot = 1;//5 
+    public float angleSpread = 1.0f;//5   
     public int ammoCount;
+    [Range(0, 100)]
     public int clipSize = 30;
     bool reloading = false;
-
+    [Space(10)]
+    [Header("Location & Constraint object")]
     //public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public Transform raycastTarget;
     public bulletScript bullets;
     public WeaponRecoil recoil;
     public GameObject magazine;
-     
+    [Space(10)]
+    [Header("Effect")]
+    public ParticleSystem MuzzleFlash;
+
     float acumulatedTime;
+    Animator gunanimation;
 
     private void Awake()
     {
+        gunanimation = GetComponent<Animator>();
         ammoCount = clipSize;
         recoil = GetComponent<WeaponRecoil>();
     }
@@ -34,6 +46,13 @@ public class RaycastWeapon : MonoBehaviour
     public void SetReloading(bool value)
     {
         reloading = value;
+        Debug.Log("Reload");
+        if (reloading)
+        {
+            //Start reloading animation;
+            if (gunanimation)
+                gunanimation.Play(weaponName + "_reload", 0, 0.0f);
+        }
     }
 
     public void StartFiring()
@@ -72,7 +91,10 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-   
+    public void WeaponReload()
+    {
+        isFiring = false;
+    }
     private void FireBullet()
     {
         if (ammoCount <=0 || reloading)
@@ -81,16 +103,34 @@ public class RaycastWeapon : MonoBehaviour
         }
         ammoCount--;
         MuzzleFlash.Emit(1);
-        //Vector3 velocity = (raycastTarget.position - raycastOrigin.position).normalized * bulletSpeed;
-        bulletScript bulletout = Instantiate(bullets, raycastOrigin.position, raycastOrigin.transform.rotation);
-        bulletout.initVarible(raycastOrigin.position, raycastTarget.position);
-        //var bullet = createBullet(raycastOrigin.position, velocity);
-        //bullets.Add(bullet);
-
+        if(gunanimation)
+            gunanimation.Play(weaponName + "_recoil",0,0.0f);
+        Vector3 angle = (raycastTarget.position - raycastOrigin.position).normalized;
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            bulletScript bulletout = Instantiate(bullets, raycastOrigin.position, raycastOrigin.transform.rotation);
+            bulletout.initVarible(raycastOrigin.position, (angle += AddNoiseOnAngle()).normalized);
+        }
         recoil.GenerateRecoid(weaponName);
     }
 
-    public void StopFiring()
+    Vector3 AddNoiseOnAngle()
+    {
+        // Find random angle between min & max inclusive
+        float xNoise = Random.Range(-angleSpread, angleSpread);
+        float yNoise = Random.Range(-angleSpread, angleSpread);
+        float zNoise = Random.Range(-angleSpread, angleSpread);
+
+        Debug.Log(xNoise + " " + yNoise + " " + zNoise);
+        // Convert Angle to Vector3
+        return new Vector3(
+          Mathf.Sin(2 * Mathf.PI * xNoise / 360),
+          Mathf.Sin(2 * Mathf.PI * yNoise / 360),
+          Mathf.Sin(2 * Mathf.PI * zNoise / 360)
+        );   
+    }
+
+        public void StopFiring()
     {
         isFiring = false;
     }

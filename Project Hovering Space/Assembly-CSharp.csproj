@@ -62,9 +62,9 @@
     <Compile Include="Assets\Scripts\For player\WeaponAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\For player\ReloadWeapon.cs" />
     <Compile Include="Assets\Scripts\For player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\For weapon\bulletScript.cs" />
     <Compile Include="Assets\Scripts\For player\ActiveWeapon.cs" />
-    <Compile Include="Assets\bullet.cs" />
-    <Compile Include="Assets\Scripts\bulletScript.cs" />
+    <Compile Include="Assets\Scripts\For weapon\greanade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

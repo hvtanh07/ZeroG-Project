@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ReloadWeapon : MonoBehaviour
 {
+    [Header("Properties")]
     public Animator rigController;
     public WeaponAnimationEvents animationEvents;
     public ActiveWeapon activeWeapon;
@@ -22,7 +23,8 @@ public class ReloadWeapon : MonoBehaviour
         RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
         if (weapon)
         {
-            if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
+            //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 if (!activeWeapon.isHolstered)
                 {
