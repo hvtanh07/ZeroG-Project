@@ -20,6 +20,11 @@ public class ReloadWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        if (nade)
+            rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
+
+
         RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         if (weapon)
         {
@@ -59,6 +64,12 @@ public class ReloadWeapon : MonoBehaviour
             case "endOf_Reload":
                 EndReload();
                 break;
+            case "throw_nade":
+                NadeleaveHand();
+                break;
+            case "RestockNade":
+                RestockNade();
+                break;
         }
     }
 
@@ -96,5 +107,23 @@ public class ReloadWeapon : MonoBehaviour
         RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
         //update UI ammo count
+    }
+    void NadeleaveHand()
+    {
+        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        GameObject ThrowingNade = Instantiate(nade.ThrowNade, nade.transform.position, nade.transform.rotation);
+        Vector3 direction = (nade.raycastTarget.position - nade.transform.position).normalized;
+
+        ThrowingNade.GetComponent<Rigidbody>().AddForce(direction * nade.ThrowForce, ForceMode.VelocityChange);
+
+        nade.HandNade.SetActive(false);
+        nade.AvailableQuantity--;
+        rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
+        rigController.ResetTrigger("throw_nade");
+    }
+    void RestockNade()
+    {
+        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        nade.HandNade.SetActive(true);
     }
 }

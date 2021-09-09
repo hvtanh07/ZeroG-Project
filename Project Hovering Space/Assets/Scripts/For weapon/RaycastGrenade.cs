@@ -6,6 +6,10 @@ public class RaycastGrenade : RaycastEquipment
 {
     public GameObject ThrowNade;
 
+    public GameObject HandNade;
+
+    public float ThrowForce = 40f;
+
     private void Awake()
     {
         recoil = GetComponent<WeaponRecoil>();
@@ -15,21 +19,26 @@ public class RaycastGrenade : RaycastEquipment
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            
+            if(!holstered)
+                Aimdirection();
         }
         if (Input.GetButtonUp("Fire1"))
         {
-            
+            Throw();
         }
     }
 
     void Aimdirection()
     {
-        //gunanimation.Play("Aim Grenade", 0, 0.0f);
+        Debug.Log("aim");
+        rigController.Play("Aim Grenade");
+        //throwNade.AimNade();
     }
     void Throw()
     {
-
+        Debug.Log("throw");
+        rigController.SetTrigger("throw_nade");
+        //throwNade.ThrowNade();
     }
      
 }

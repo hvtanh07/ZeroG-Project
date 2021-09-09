@@ -46,9 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Grenade
   weaponSlot: 2
-  AvailableQuantity: 1
+  equipmentEvents: {fileID: 0}
+  AvailableQuantity: 2
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
+  rigController: {fileID: 0}
+  ThrowNade: {fileID: 7432910923255352898, guid: b1b474f3c1afb24408b5fd100185e863, type: 3}
+  HandNade: {fileID: 5565906197433814910}
+  ThrowForce: 10
 --- !u!1001 &3516537234415806673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,6 +111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}
+--- !u!1 &5565906197433814910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9075648018882619311, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}
+  m_PrefabInstance: {fileID: 3516537234415806673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8891596510268423533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5451734965839402428, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}

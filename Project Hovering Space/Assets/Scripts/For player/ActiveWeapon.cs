@@ -21,7 +21,7 @@ public class ActiveWeapon : MonoBehaviour
     public Animator rigController;
     public Cinemachine.CinemachineFreeLook playerCamera;
     public WeaponAnimationEvents animationEvents;
-    RaycastEquipment[] equiped_weapons = new RaycastEquipment[4];
+    public RaycastEquipment[] equiped_weapons = new RaycastEquipment[4];
     int activeweaponIndex;
     public bool isHolstered = false;
     RaycastEquipment weapon;
@@ -43,6 +43,11 @@ public class ActiveWeapon : MonoBehaviour
             return GetWeapon(activeweaponIndex);
         else
             return GetWeapon(-1);
+    }
+
+    public RaycastEquipment GetActiveNade()
+    {
+        return GetWeapon(2);
     }
 
     RaycastEquipment GetWeapon(int index)
@@ -82,7 +87,7 @@ public class ActiveWeapon : MonoBehaviour
         {
             SetActiveWeapon(WeaponSlot.Tool);
         }
-        
+        FindOutOfStockWeapon();
     }
 
     public void Equip(RaycastEquipment newWeapon)
@@ -95,11 +100,13 @@ public class ActiveWeapon : MonoBehaviour
         }
         weapon = newWeapon;
         weapon.raycastTarget = crosshairTarget;
-        weapon.recoil.playerCamera = playerCamera;
-        weapon.recoil.rigController = rigController;
-        weapon.equipmentEvents = animationEvents;
+        if (weapon.recoil)
+        {
+            weapon.recoil.playerCamera = playerCamera;
+            weapon.recoil.rigController = rigController;
+        }
         weapon.transform.SetParent(weaponSlot[weaponSlotIndex], false);
-
+        weapon.rigController = rigController;
         equiped_weapons[weaponSlotIndex] = weapon;
 
         SetActiveWeapon(newWeapon.weaponSlot);
@@ -107,38 +114,27 @@ public class ActiveWeapon : MonoBehaviour
         //update UI ammo count
     }
 
-    public void UnEquip(int weaponSlotIndex)
+    void FindOutOfStockWeapon()
     {
+        for (int i = 0;i < equiped_weapons.Length; i++)
+        {
+            if (equiped_weapons[i])
+                if (equiped_weapons[i].AvailableQuantity <= 0)
+                    UnEquipOutOfStockWeapon(i);
+        }
+    }
 
-        Debug.Log(weaponSlotIndex);
+    public void UnEquipOutOfStockWeapon(int weaponSlotIndex)
+    {
         var weapon = GetWeapon(weaponSlotIndex);
         if (weapon)
         {
+            Destroy(weapon.gameObject);
             Destroy(equiped_weapons[weaponSlotIndex]);
+            
         }
         equiped_weapons[weaponSlotIndex] = null;
-        for (int i = 0; equiped_weapons[i] != null; i++)
-        {
-            switch (i) {
-                case 0:
-                    SetActiveWeapon(WeaponSlot.Primary);
-                    break;
-                case 1:
-                    SetActiveWeapon(WeaponSlot.Secondary);
-                    break;
-                case 2:
-                    SetActiveWeapon(WeaponSlot.Grenade);
-                    break;
-                case 3:
-                    SetActiveWeapon(WeaponSlot.Tool);
-                    break;    
-                default:
-                    SetActiveWeapon(WeaponSlot.Primary);
-                    rigController.Play("Unarmed");
-                    break;
-            }
-        }
-
+        rigController.Play("Unarmed");
         //update UI ammo count
     }
 

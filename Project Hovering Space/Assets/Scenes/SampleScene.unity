@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 144394739036500069, guid: fda577a4193476948adaa14700a3bd12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.302
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 144394739036500069, guid: fda577a4193476948adaa14700a3bd12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 144394739036500069, guid: fda577a4193476948adaa14700a3bd12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.255
+      value: -0.068
       objectReference: {fileID: 0}
     - target: {fileID: 144394739036500069, guid: fda577a4193476948adaa14700a3bd12, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1182,6 +1182,11 @@ MonoBehaviour:
   rigController: {fileID: 8586036925069336601}
   playerCamera: {fileID: 8586036924339730449}
   animationEvents: {fileID: 8586036925069336602}
+  equiped_weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isHolstered: 0
 --- !u!114 &919132148794184426
 MonoBehaviour:

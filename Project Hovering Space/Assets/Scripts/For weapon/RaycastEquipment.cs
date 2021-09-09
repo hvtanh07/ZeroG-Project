@@ -11,6 +11,9 @@ public class RaycastEquipment : MonoBehaviour
     public int AvailableQuantity;
     public Transform raycastTarget;
     public WeaponRecoil recoil;
+    public Animator rigController;
+    //public GrenadeThrow throwNade;
+    //public WeaponAnimationEvents animationEvents;
 
 
     public virtual void UpdateWeapon(float deltaTime, bool holstered)
