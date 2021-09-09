@@ -20,7 +20,7 @@ public class ReloadWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         if (weapon)
         {
             //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
@@ -64,7 +64,7 @@ public class ReloadWeapon : MonoBehaviour
 
     void DettachMagazine()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         magazineHand = Instantiate(weapon.magazine, leftHand, true);
         weapon.magazine.SetActive(false);
     }
@@ -84,7 +84,7 @@ public class ReloadWeapon : MonoBehaviour
     }
     void AttachMagazine()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         weapon.magazine.SetActive(true);
         Destroy(magazineHand);
         weapon.ammoCount = weapon.clipSize;
@@ -93,7 +93,7 @@ public class ReloadWeapon : MonoBehaviour
     }
     void EndReload()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
         //update UI ammo count
     }

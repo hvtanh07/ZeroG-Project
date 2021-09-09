@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Animations;
 
+
 public class ActiveWeapon : MonoBehaviour
 {
     public enum WeaponSlot
@@ -10,6 +11,7 @@ public class ActiveWeapon : MonoBehaviour
         Primary = 0,
         Secondary = 1,
         Grenade = 2,
+        Tool = 3,
     }    
     public Transform[] weaponSlot;
 
@@ -18,31 +20,32 @@ public class ActiveWeapon : MonoBehaviour
     public Transform crosshairTarget;
     public Animator rigController;
     public Cinemachine.CinemachineFreeLook playerCamera;
-
-    RaycastWeapon[] equiped_weapons = new RaycastWeapon[2];
+    public WeaponAnimationEvents animationEvents;
+    RaycastEquipment[] equiped_weapons = new RaycastEquipment[4];
     int activeweaponIndex;
     public bool isHolstered = false;
-    int Holsterindex;
-
-    RaycastWeapon weapon;
+    RaycastEquipment weapon;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        RaycastWeapon exitingWeapon = GetComponentInChildren<RaycastWeapon>();
+        RaycastEquipment exitingWeapon = GetComponentInChildren<RaycastEquipment>();
         if (exitingWeapon)
         {
             Equip(exitingWeapon);
         }
     }
 
-    public RaycastWeapon GetActiveWeapon()
+    public RaycastEquipment GetActiveGun()
     {
-        return GetWeapon(activeweaponIndex);
+        if (1 >= activeweaponIndex)
+            return GetWeapon(activeweaponIndex);
+        else
+            return GetWeapon(-1);
     }
 
-    RaycastWeapon GetWeapon(int index)
+    RaycastEquipment GetWeapon(int index)
     {
         if (index < 0 || index >= weaponSlot.Length)
         {
@@ -71,9 +74,18 @@ public class ActiveWeapon : MonoBehaviour
         {
             SetActiveWeapon(WeaponSlot.Secondary);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetActiveWeapon(WeaponSlot.Grenade);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetActiveWeapon(WeaponSlot.Tool);
+        }
+        
     }
 
-    public void Equip(RaycastWeapon newWeapon)
+    public void Equip(RaycastEquipment newWeapon)
     {
         int weaponSlotIndex = (int)newWeapon.weaponSlot;
         var weapon = GetWeapon(weaponSlotIndex);
@@ -85,11 +97,47 @@ public class ActiveWeapon : MonoBehaviour
         weapon.raycastTarget = crosshairTarget;
         weapon.recoil.playerCamera = playerCamera;
         weapon.recoil.rigController = rigController;
+        weapon.equipmentEvents = animationEvents;
         weapon.transform.SetParent(weaponSlot[weaponSlotIndex], false);
 
         equiped_weapons[weaponSlotIndex] = weapon;
 
         SetActiveWeapon(newWeapon.weaponSlot);
+
+        //update UI ammo count
+    }
+
+    public void UnEquip(int weaponSlotIndex)
+    {
+
+        Debug.Log(weaponSlotIndex);
+        var weapon = GetWeapon(weaponSlotIndex);
+        if (weapon)
+        {
+            Destroy(equiped_weapons[weaponSlotIndex]);
+        }
+        equiped_weapons[weaponSlotIndex] = null;
+        for (int i = 0; equiped_weapons[i] != null; i++)
+        {
+            switch (i) {
+                case 0:
+                    SetActiveWeapon(WeaponSlot.Primary);
+                    break;
+                case 1:
+                    SetActiveWeapon(WeaponSlot.Secondary);
+                    break;
+                case 2:
+                    SetActiveWeapon(WeaponSlot.Grenade);
+                    break;
+                case 3:
+                    SetActiveWeapon(WeaponSlot.Tool);
+                    break;    
+                default:
+                    SetActiveWeapon(WeaponSlot.Primary);
+                    rigController.Play("Unarmed");
+                    break;
+            }
+        }
 
         //update UI ammo count
     }
@@ -129,7 +177,24 @@ public class ActiveWeapon : MonoBehaviour
         activeweaponIndex = activeIndex;
     }
 
-    IEnumerator HolsterWeapon(int index)
+    public IEnumerator putAllweaponAway()
+    {
+        isHolstered = true;
+        var weapon = GetWeapon(activeweaponIndex);
+        if (weapon)
+        {
+            rigController.SetBool("holster_weapon", true);
+            //do
+            //{
+            //    yield return new WaitForEndOfFrame();
+            //} while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+
+            //Used when RigLayer animator use Animate Physics Update Mode.
+            yield return new WaitForSeconds(rigController.GetCurrentAnimatorStateInfo(0).length);
+        }
+    }
+
+    public IEnumerator HolsterWeapon(int index)
     {
         isHolstered = true;
         var weapon = GetWeapon(index);       

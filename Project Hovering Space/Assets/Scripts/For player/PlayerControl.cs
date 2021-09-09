@@ -5,29 +5,41 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     // Start is called before the first frame update   
-    RaycastWeapon weapon;
+    public Transform targetLand;
+
+    public float power = 15000f;
+    public float torque = 500f;
+    public float gravity = 9.81f;
+
+    public bool autoOrient = false;
+    public float autoOrientSpeed = 1f;
+
+    Rigidbody body;
 
     void Start()
     {               
-        weapon = GetComponentInChildren<RaycastWeapon>();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        body = GetComponent<Rigidbody>();
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    weapon.StartFiring();
-        //}
-        //if (weapon.isFiring)
-        //{
-        //    weapon.UpdateFiring(Time.deltaTime);
-        //}
-        //weapon.UpdateBullets(Time.deltaTime);
-        //if (Input.GetButtonUp("Fire1"))
-        //{
-        //    weapon.StopFiring();
-        //}
+        ProcessGravity();
+    }
+    void ProcessGravity()
+    {
+        Vector3 diff = transform.position - targetLand.position;
+        body.AddForce(-diff.normalized * gravity * (body.mass));
+
+        if (autoOrient)
+        {
+            AutoOrient(-diff);
+        }
+    }
+    void AutoOrient(Vector3 down)
+    {
+        Quaternion orientationDirection = Quaternion.FromToRotation(-transform.up, down) * transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, orientationDirection, Time.deltaTime * autoOrientSpeed);
     }
 }

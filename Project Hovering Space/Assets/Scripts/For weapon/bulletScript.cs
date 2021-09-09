@@ -11,7 +11,7 @@ public class bulletScript : MonoBehaviour
     int bounce;
 
     [Header("Properties")]   
-    public RaycastWeapon.bulletType typeofBullet;
+    public RaycastBulletGun.bulletType typeofBullet;
     [Range(0f, 1f)]
     public float ricochetChance;
     public float minRicochetAngle;

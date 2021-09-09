@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class weaponPickup : MonoBehaviour
 {
-    public RaycastWeapon weaponFab;
+    public RaycastGrenade nade_drop;
+    public RaycastBulletGun gun_drop;
 
     private void OnTriggerEnter(Collider other)
     {
         ActiveWeapon activeWeapon = other.gameObject.GetComponent<ActiveWeapon>();
         if (activeWeapon)
         {
-            RaycastWeapon newWeapon = Instantiate(weaponFab);
-            activeWeapon.Equip(newWeapon);
+            if (gun_drop)
+            {
+                RaycastEquipment newGun = Instantiate(gun_drop);
+                activeWeapon.Equip(newGun);
+            }
+            if (nade_drop)
+            {
+                RaycastEquipment newNade = Instantiate(nade_drop);
+                activeWeapon.Equip(newNade);
+            }
             //Destroy(gameObject);
         }
     }

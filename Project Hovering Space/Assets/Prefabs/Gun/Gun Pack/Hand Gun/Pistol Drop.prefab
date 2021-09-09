@@ -346,7 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48925ac9d111672499959811d1c10cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponFab: {fileID: 7170724089456810488, guid: af1f2c0ea4f8efe4297a152d599acb37, type: 3}
+  nade_drop: {fileID: 0}
+  gun_drop: {fileID: 177528671450906259, guid: af1f2c0ea4f8efe4297a152d599acb37, type: 3}
 --- !u!65 &2916315498292268166
 BoxCollider:
   m_ObjectHideFlags: 0
