@@ -20,12 +20,12 @@ public class ReloadWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
         if (nade)
             rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
 
 
-        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         if (weapon)
         {
             //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
@@ -75,7 +75,7 @@ public class ReloadWeapon : MonoBehaviour
 
     void DettachMagazine()
     {
-        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         magazineHand = Instantiate(weapon.magazine, leftHand, true);
         weapon.magazine.SetActive(false);
     }
@@ -95,7 +95,7 @@ public class ReloadWeapon : MonoBehaviour
     }
     void AttachMagazine()
     {
-        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.magazine.SetActive(true);
         Destroy(magazineHand);
         weapon.ammoCount = weapon.clipSize;
@@ -104,13 +104,13 @@ public class ReloadWeapon : MonoBehaviour
     }
     void EndReload()
     {
-        RaycastBulletGun weapon = (RaycastBulletGun)activeWeapon.GetActiveGun();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
         //update UI ammo count
     }
     void NadeleaveHand()
     {
-        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
         GameObject ThrowingNade = Instantiate(nade.ThrowNade, nade.transform.position, nade.transform.rotation);
         Vector3 direction = (nade.raycastTarget.position - nade.transform.position).normalized;
 
@@ -123,7 +123,7 @@ public class ReloadWeapon : MonoBehaviour
     }
     void RestockNade()
     {
-        RaycastGrenade nade = (RaycastGrenade)activeWeapon.GetActiveNade();
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
         nade.HandNade.SetActive(true);
     }
 }

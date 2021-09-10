@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class RaycastEquipment : MonoBehaviour
 {
-    [Header("Properties")]
+    [Header("Equipment Properties")]
     public string weaponName;
     public ActiveWeapon.WeaponSlot weaponSlot;
-    public WeaponAnimationEvents equipmentEvents;
     public int AvailableQuantity;
     public Transform raycastTarget;
     public WeaponRecoil recoil;
@@ -25,5 +24,9 @@ public class RaycastEquipment : MonoBehaviour
     public virtual void FireBullet()
     {
         //firebullet
+    }
+    public virtual void StopFiring()
+    {
+
     }
 }

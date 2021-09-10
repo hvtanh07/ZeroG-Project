@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\For weapon\greanade.cs" />
     <Compile Include="Assets\Scripts\For weapon\bulletScript.cs" />
     <Compile Include="Assets\Scripts\For player\ActiveWeapon.cs" />
-    <Compile Include="Assets\Scripts\For player\GrenadeThrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

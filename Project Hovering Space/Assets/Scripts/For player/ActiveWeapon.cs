@@ -25,7 +25,8 @@ public class ActiveWeapon : MonoBehaviour
     int activeweaponIndex;
     public bool isHolstered = false;
     RaycastEquipment weapon;
-
+    int SelectedWeapon = 0;
+    int PrevSelectedWeapon = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,17 +38,17 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
-    public RaycastEquipment GetActiveGun()
+    public RaycastBulletGun GetActiveGun()
     {
         if (1 >= activeweaponIndex)
-            return GetWeapon(activeweaponIndex);
+            return (RaycastBulletGun)GetWeapon(activeweaponIndex);
         else
-            return GetWeapon(-1);
+            return (RaycastBulletGun)GetWeapon(-1);
     }
 
-    public RaycastEquipment GetActiveNade()
+    public RaycastGrenade GetActiveNade()
     {
-        return GetWeapon(2);
+        return (RaycastGrenade)GetWeapon(2);
     }
 
     RaycastEquipment GetWeapon(int index)
@@ -71,23 +72,54 @@ public class ActiveWeapon : MonoBehaviour
         {
             ToggleActiveWeapon();
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            if (SelectedWeapon > equiped_weapons.Length - 1)
+                SelectedWeapon = 0;
+            else
+                SelectedWeapon++;
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if (SelectedWeapon < 0)
+                SelectedWeapon = equiped_weapons.Length - 1;
+            else
+                SelectedWeapon--;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SetActiveWeapon(WeaponSlot.Primary);
+            SelectedWeapon = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SetActiveWeapon(WeaponSlot.Secondary);
+            SelectedWeapon = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SetActiveWeapon(WeaponSlot.Grenade);
+            SelectedWeapon = 2;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SetActiveWeapon(WeaponSlot.Tool);
+            SelectedWeapon = 3;
         }
+        SelectingWeapon(SelectedWeapon);
         FindOutOfStockWeapon();
+    }
+
+    void SelectingWeapon(int weaponIndex)
+    {
+        if (PrevSelectedWeapon == weaponIndex) return;
+        Debug.Log("activeweaponIndex: " + activeweaponIndex + "weaponIndex: " + (weaponIndex-1));
+        if (GetActiveNade() && weaponIndex != 2)
+            if (GetActiveNade().isAiming())
+            {
+                Debug.Log("butwhy");
+                GetActiveNade().CancelThrow();
+            }
+        PrevSelectedWeapon = weaponIndex;
+        SetActiveWeapon(weaponIndex);
     }
 
     public void Equip(RaycastEquipment newWeapon)
@@ -151,6 +183,19 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
+    void SetActiveWeapon(int weaponSlot)
+    {
+        int holsterIndex = activeweaponIndex;
+        int activateIndex = weaponSlot;
+
+        if (holsterIndex == activateIndex)
+        {
+            holsterIndex = -1;
+        }
+
+        StartCoroutine(SwitchWeapon(holsterIndex, activateIndex));
+    }
+
     void SetActiveWeapon(WeaponSlot weaponSlot)
     {
         int holsterIndex = activeweaponIndex;
@@ -179,6 +224,7 @@ public class ActiveWeapon : MonoBehaviour
         var weapon = GetWeapon(activeweaponIndex);
         if (weapon)
         {
+            weapon.StopFiring();
             rigController.SetBool("holster_weapon", true);
             //do
             //{
@@ -196,6 +242,7 @@ public class ActiveWeapon : MonoBehaviour
         var weapon = GetWeapon(index);       
         if (weapon)
         {
+            weapon.StopFiring();
             rigController.SetBool("holster_weapon", true);
             //do
             //{

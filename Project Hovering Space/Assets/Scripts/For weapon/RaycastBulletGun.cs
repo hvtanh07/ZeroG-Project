@@ -10,7 +10,7 @@ public class RaycastBulletGun : RaycastEquipment
         defaultType = 0,
         Greanade = 2,
     }
-    [Header("Properties")]
+    [Header("Gun Properties")]
     public bool isFiring = false;
     public float fireRate = 11f;
     public int bulletsPerShot = 1;//5 
@@ -130,7 +130,7 @@ public class RaycastBulletGun : RaycastEquipment
         );   
     }
 
-        public void StopFiring()
+    public override void StopFiring()
     {
         isFiring = false;
     }
