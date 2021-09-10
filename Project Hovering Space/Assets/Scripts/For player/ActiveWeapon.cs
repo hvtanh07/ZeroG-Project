@@ -75,17 +75,25 @@ public class ActiveWeapon : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (SelectedWeapon > equiped_weapons.Length - 1)
-                SelectedWeapon = 0;
-            else
-                SelectedWeapon++;
+            do
+            {
+                if (SelectedWeapon > equiped_weapons.Length - 1)
+                    SelectedWeapon = 0;
+                else
+                    SelectedWeapon++;
+            }
+            while (!GetWeapon(SelectedWeapon));    
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            if (SelectedWeapon < 0)
-                SelectedWeapon = equiped_weapons.Length - 1;
-            else
-                SelectedWeapon--;
+            do
+            {
+                if (SelectedWeapon < 0)
+                    SelectedWeapon = equiped_weapons.Length - 1;
+                else
+                    SelectedWeapon--;
+            }
+            while (!GetWeapon(SelectedWeapon));
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -110,12 +118,13 @@ public class ActiveWeapon : MonoBehaviour
 
     void SelectingWeapon(int weaponIndex)
     {
+        if (!GetWeapon(weaponIndex))
+            return;
         if (PrevSelectedWeapon == weaponIndex) return;
-        Debug.Log("activeweaponIndex: " + activeweaponIndex + "weaponIndex: " + (weaponIndex-1));
+       
         if (GetActiveNade() && weaponIndex != 2)
             if (GetActiveNade().isAiming())
             {
-                Debug.Log("butwhy");
                 GetActiveNade().CancelThrow();
             }
         PrevSelectedWeapon = weaponIndex;

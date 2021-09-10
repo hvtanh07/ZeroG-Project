@@ -64,7 +64,6 @@ public class RaycastGrenade : RaycastEquipment
 
     public void CancelThrow()
     {
-        Debug.Log("cacele");
         rigController.SetBool("cancel_nade", true);
     }
     void Throw()
