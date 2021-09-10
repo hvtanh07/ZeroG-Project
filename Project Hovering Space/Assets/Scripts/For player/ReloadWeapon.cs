@@ -20,7 +20,12 @@ public class ReloadWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
+        if (nade)
+            rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
+
+
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         if (weapon)
         {
             //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
@@ -59,12 +64,18 @@ public class ReloadWeapon : MonoBehaviour
             case "endOf_Reload":
                 EndReload();
                 break;
+            case "throw_nade":
+                NadeleaveHand();
+                break;
+            case "RestockNade":
+                RestockNade();
+                break;
         }
     }
 
     void DettachMagazine()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         magazineHand = Instantiate(weapon.magazine, leftHand, true);
         weapon.magazine.SetActive(false);
     }
@@ -84,7 +95,7 @@ public class ReloadWeapon : MonoBehaviour
     }
     void AttachMagazine()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.magazine.SetActive(true);
         Destroy(magazineHand);
         weapon.ammoCount = weapon.clipSize;
@@ -93,8 +104,26 @@ public class ReloadWeapon : MonoBehaviour
     }
     void EndReload()
     {
-        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
         //update UI ammo count
+    }
+    void NadeleaveHand()
+    {
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
+        GameObject ThrowingNade = Instantiate(nade.ThrowNade, nade.transform.position, nade.transform.rotation);
+        Vector3 direction = (nade.raycastTarget.position - nade.transform.position).normalized;
+
+        ThrowingNade.GetComponent<Rigidbody>().AddForce(direction * nade.ThrowForce, ForceMode.VelocityChange);
+
+        nade.HandNade.SetActive(false);
+        nade.AvailableQuantity--;
+        rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
+        rigController.ResetTrigger("throw_nade");
+    }
+    void RestockNade()
+    {
+        RaycastGrenade nade = activeWeapon.GetActiveNade();
+        nade.HandNade.SetActive(true);
     }
 }

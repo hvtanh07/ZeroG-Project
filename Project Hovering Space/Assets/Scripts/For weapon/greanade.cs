@@ -8,7 +8,7 @@ public class greanade : MonoBehaviour
     public float delay = 3f;
     public float radius = 5f;
     public float force = 700f;
-    public bool Thrown = true;
+    public bool beenThrown = true;
     public float countdown;
     [Space(10)]
     [Header("Effect")]
@@ -25,7 +25,7 @@ public class greanade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Thrown)
+        if (beenThrown)
             countdown -= Time.deltaTime;
         if (countdown <= 0 && !Exploded)
         {

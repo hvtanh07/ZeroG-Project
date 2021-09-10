@@ -53,18 +53,20 @@
     <UnityVersion>2020.3.15f2</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\For weapon\RaycastWeapon.cs" />
+    <Compile Include="Assets\Scripts\For weapon\RaycastBulletGun.cs" />
+    <Compile Include="Assets\Scripts\For weapon\RaycastEquipment.cs" />
     <Compile Include="Assets\Scripts\For player\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\For weapon\WeaponRecoil.cs" />
     <Compile Include="Assets\Scripts\For weapon\weaponPickup.cs" />
     <Compile Include="Assets\Scripts\For camera\CrossHairTarget.cs" />
+    <Compile Include="Assets\Scripts\For weapon\RaycastGrenade.cs" />
     <Compile Include="Assets\Scripts\For player\CharacterLocomotion.cs" />
     <Compile Include="Assets\Scripts\For player\WeaponAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\For player\ReloadWeapon.cs" />
     <Compile Include="Assets\Scripts\For player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\For weapon\greanade.cs" />
     <Compile Include="Assets\Scripts\For weapon\bulletScript.cs" />
     <Compile Include="Assets\Scripts\For player\ActiveWeapon.cs" />
-    <Compile Include="Assets\Scripts\For weapon\greanade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
