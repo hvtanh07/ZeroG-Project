@@ -79,8 +79,9 @@ MonoBehaviour:
   delay: 3
   radius: 5
   force: 700
-  Thrown: 0
+  beenThrown: 1
   countdown: 0
+  NadeObject: {fileID: 1933219428731260030}
   Effect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!1001 &7432910921809325009
 PrefabInstance:
@@ -139,6 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}
+--- !u!1 &1933219428731260030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9075648018882619311, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}
+  m_PrefabInstance: {fileID: 7432910921809325009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3210913749544205933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5451734965839402428, guid: a957a8d7aa90295459fce7e1d4fcd036, type: 3}

@@ -82,15 +82,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pistol
   weaponSlot: 1
-  equipmentEvents: {fileID: 0}
+  weaponType: 0
   AvailableQuantity: 1
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
+  rigController: {fileID: 0}
   isFiring: 0
   fireRate: 1
   bulletsPerShot: 1
   angleSpread: 1
   ammoCount: 0
+  fireMode: 1
   clipSize: 15
   raycastOrigin: {fileID: 6711183284838858086}
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}

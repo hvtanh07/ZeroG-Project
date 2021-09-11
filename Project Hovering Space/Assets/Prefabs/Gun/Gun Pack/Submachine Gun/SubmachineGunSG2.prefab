@@ -50,19 +50,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: SMG2
   weaponSlot: 1
+  weaponType: 0
+  AvailableQuantity: 1
+  raycastTarget: {fileID: 0}
+  recoil: {fileID: 0}
+  rigController: {fileID: 0}
   isFiring: 0
   fireRate: 11
-  MuzzleFlash: {fileID: 5566886519296298101}
-  HitEffect: {fileID: 1763339710505802672}
-  weaponName: SMG2
+  bulletsPerShot: 1
+  angleSpread: 1
   ammoCount: 0
+  fireMode: 0
   clipSize: 30
   raycastOrigin: {fileID: 1894310821000479377}
-  raycastTarget: {fileID: 0}
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
-  recoil: {fileID: 0}
   magazine: {fileID: 493217003304731749}
+  MuzzleFlash: {fileID: 5566886519296298101}
 --- !u!114 &2731842106033496706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,10 +421,5 @@ PrefabInstance:
 --- !u!4 &1924457470703765526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 6554930705092777622}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1763339710505802672 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4796173765594762534, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
   m_PrefabInstance: {fileID: 6554930705092777622}
   m_PrefabAsset: {fileID: 0}

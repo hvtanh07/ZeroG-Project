@@ -80,19 +80,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: 1
-  isFiring: 0
-  fireRate: 1
-  MuzzleFlash: {fileID: 1899127711493380654}
-  HitEffect: {fileID: 5612029271137409549}
   weaponName: Revolver
+  weaponSlot: 1
+  weaponType: 0
+  AvailableQuantity: 1
+  raycastTarget: {fileID: 0}
+  recoil: {fileID: 0}
+  rigController: {fileID: 0}
+  isFiring: 0
+  fireRate: 2
+  bulletsPerShot: 1
+  angleSpread: 1
   ammoCount: 0
+  fireMode: 1
   clipSize: 6
   raycastOrigin: {fileID: 3945759772280903032}
-  raycastTarget: {fileID: 0}
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
-  recoil: {fileID: 0}
   magazine: {fileID: 4881369425064764175}
+  MuzzleFlash: {fileID: 1899127711493380654}
 --- !u!114 &401533423685649915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,11 +225,6 @@ PrefabInstance:
 --- !u!4 &5705006447466744235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 1111967185614378795}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5612029271137409549 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4796173765594762534, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
   m_PrefabInstance: {fileID: 1111967185614378795}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1773093899994285940

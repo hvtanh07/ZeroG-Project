@@ -26,6 +26,7 @@ public class ReloadWeapon : MonoBehaviour
 
 
         RaycastBulletGun weapon = activeWeapon.GetActiveGun();
+        RaycastNadeLauncher nadeLauncher = activeWeapon.GetActiveGrenadeLauncher();
         if (weapon)
         {
             //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
@@ -35,18 +36,33 @@ public class ReloadWeapon : MonoBehaviour
                 {
                     rigController.SetTrigger("reload_weapon");
                     weapon.SetReloading(true);
-                }               
+                }
             }
             if (weapon.isFiring)
             {
                 //update UI ammo count
             }
-        }        
+        }
+        if (nadeLauncher)
+        {
+            //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (!activeWeapon.isHolstered)
+                {
+                    rigController.SetTrigger("reload_weapon");
+                    nadeLauncher.SetReloading(true);
+                }
+            }
+            if (nadeLauncher.isFiring)
+            {
+                //update UI ammo count
+            }
+        }
     }
 
     void OnAnimationEvent(string eventName)
     {
-        
         switch (eventName)
         {
             case "detach_magazine":
@@ -63,6 +79,15 @@ public class ReloadWeapon : MonoBehaviour
                 break;
             case "endOf_Reload":
                 EndReload();
+                break;
+            case "detach_magazine_gl":
+                DettachMagazine_GL();
+                break;
+            case "attach_magazine_gl":
+                AttachMagazine_GL();
+                break;
+            case "endOf_Reload_gl":
+                EndReload_GL();
                 break;
             case "throw_nade":
                 NadeleaveHand();
@@ -105,6 +130,27 @@ public class ReloadWeapon : MonoBehaviour
     void EndReload()
     {
         RaycastBulletGun weapon = activeWeapon.GetActiveGun();
+        weapon.SetReloading(false);
+        //update UI ammo count
+    }
+    void DettachMagazine_GL()
+    {
+        RaycastNadeLauncher weapon = activeWeapon.GetActiveGrenadeLauncher();
+        magazineHand = Instantiate(weapon.magazine, leftHand, true);
+        weapon.magazine.SetActive(false);
+    }
+    void AttachMagazine_GL()
+    {
+        RaycastNadeLauncher weapon = activeWeapon.GetActiveGrenadeLauncher();
+        weapon.magazine.SetActive(true);
+        Destroy(magazineHand);
+        weapon.ammoCount = weapon.clipSize;
+        rigController.ResetTrigger("reload_weapon");
+        //update UI ammo count
+    }
+    void EndReload_GL()
+    {
+        RaycastNadeLauncher weapon = activeWeapon.GetActiveGrenadeLauncher();
         weapon.SetReloading(false);
         //update UI ammo count
     }

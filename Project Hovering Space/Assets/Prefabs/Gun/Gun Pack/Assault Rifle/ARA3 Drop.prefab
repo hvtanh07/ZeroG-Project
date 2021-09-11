@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nade_drop: {fileID: 0}
   gun_drop: {fileID: 8831634344859521139, guid: 4dd28c48673397b46b8017c98061714b, type: 3}
+  nadelaunch_drop: {fileID: 0}
 --- !u!65 &9186252298794831035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8358245, y: 0.19451427, z: 0.09703542}
-  m_Center: {x: 0.38991666, y: 0.0025652647, z: 0.000000067055225}
+  m_Size: {x: 0.8138082, y: 0.21377857, z: 0.09703542}
+  m_Center: {x: 0.38991666, y: -0.015323006, z: 0.000000067055225}
 --- !u!1001 &2118655078902780514
 PrefabInstance:
   m_ObjectHideFlags: 0

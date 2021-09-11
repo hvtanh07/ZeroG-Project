@@ -53,6 +53,7 @@ MonoBehaviour:
   MaxlifeTime: 3
   HitEffect: {fileID: 3879811767169002469}
   tracerEffect: {fileID: 3983254784631264069, guid: 069d142a959da7b48aff2667423dbade, type: 3}
+  ExplosionEffect: {fileID: 0}
 --- !u!1001 &8599819888362514115
 PrefabInstance:
   m_ObjectHideFlags: 0

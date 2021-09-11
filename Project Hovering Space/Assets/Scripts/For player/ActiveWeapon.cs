@@ -10,9 +10,15 @@ public class ActiveWeapon : MonoBehaviour
     {
         Primary = 0,
         Secondary = 1,
-        Grenade = 2,
-        Tool = 3,
-    }    
+        Equipment1 = 2,
+        Equipment2 = 3,
+    }
+    public enum WeaponType
+    {
+        DefaultGun = 0,
+        GrenadeLauncher = 1,
+        Grenade = 2,       
+    }
     public Transform[] weaponSlot;
 
     [Space(10)]
@@ -40,15 +46,24 @@ public class ActiveWeapon : MonoBehaviour
 
     public RaycastBulletGun GetActiveGun()
     {
-        if (1 >= activeweaponIndex)
-            return (RaycastBulletGun)GetWeapon(activeweaponIndex);
-        else
-            return (RaycastBulletGun)GetWeapon(-1);
+        if (GetWeapon(activeweaponIndex))
+            if(GetWeapon(activeweaponIndex).weaponType == WeaponType.DefaultGun)
+                return (RaycastBulletGun)GetWeapon(activeweaponIndex);
+        return null;
     }
-
     public RaycastGrenade GetActiveNade()
     {
-        return (RaycastGrenade)GetWeapon(2);
+        if (GetWeapon(activeweaponIndex))
+            if(GetWeapon(activeweaponIndex).weaponType == WeaponType.Grenade)
+                return (RaycastGrenade)GetWeapon(activeweaponIndex);
+        return null;
+    }
+    public RaycastNadeLauncher GetActiveGrenadeLauncher()//Change to Grenade Launcher
+    {
+        if (GetWeapon(activeweaponIndex))
+            if(GetWeapon(activeweaponIndex).weaponType == WeaponType.GrenadeLauncher)
+            return (RaycastNadeLauncher)GetWeapon(activeweaponIndex);
+        return null;
     }
 
     RaycastEquipment GetWeapon(int index)
@@ -121,7 +136,7 @@ public class ActiveWeapon : MonoBehaviour
         if (!GetWeapon(weaponIndex))
             return;
         if (PrevSelectedWeapon == weaponIndex) return;
-       
+
         if (GetActiveNade() && weaponIndex != 2)
             if (GetActiveNade().isAiming())
             {

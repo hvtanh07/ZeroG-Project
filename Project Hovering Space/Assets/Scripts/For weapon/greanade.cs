@@ -10,6 +10,7 @@ public class greanade : MonoBehaviour
     public float force = 700f;
     public bool beenThrown = true;
     public float countdown;
+    public GameObject NadeObject;
     [Space(10)]
     [Header("Effect")]
     public GameObject Effect;
@@ -35,6 +36,7 @@ public class greanade : MonoBehaviour
     }
     void Explode()
     {
+        NadeObject.SetActive(false);
         Instantiate(Effect, transform.position, transform.rotation);
         Collider[] collidersDestroy = Physics.OverlapSphere(transform.position, radius);
 

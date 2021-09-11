@@ -10,18 +10,23 @@ public class RaycastBulletGun : RaycastEquipment
         defaultType = 0,
         Greanade = 2,
     }
+    public enum Firemode
+    {
+        auto = 0,
+        tap = 1,
+    }
     [Header("Gun Properties")]
     public bool isFiring = false;
     public float fireRate = 11f;
     public int bulletsPerShot = 1;//5 
     public float angleSpread = 1.0f;//5   
     public int ammoCount;
+    public Firemode fireMode;
     [Range(0, 100)]
     public int clipSize = 30;
     bool reloading = false;
     [Space(10)]
     [Header("Location & Constraint object")]
-    //public AnimationClip weaponAnimation;
     public Transform raycastOrigin;
     public bulletScript bullets;
     public GameObject magazine;
@@ -52,13 +57,8 @@ public class RaycastBulletGun : RaycastEquipment
 
     public void StartFiring()
     {
-        if(weaponSlot == ActiveWeapon.WeaponSlot.Grenade)
-        {
-            //Aiming the grenade
-            return;
-        }
         isFiring = true;
-        acumulatedTime = 0f;
+        //acumulatedTime = 0f;
         recoil.Reset(); 
 
     }
@@ -88,13 +88,13 @@ public class RaycastBulletGun : RaycastEquipment
         {
             FireBullet();
             acumulatedTime -= fireInteval;
+            if (fireMode == Firemode.tap)
+            {
+                isFiring = false;
+            }          
         }
     }
 
-    public void WeaponReload()
-    {
-        isFiring = false;
-    }
     public override void FireBullet()
     {
         if (ammoCount <=0 || reloading)

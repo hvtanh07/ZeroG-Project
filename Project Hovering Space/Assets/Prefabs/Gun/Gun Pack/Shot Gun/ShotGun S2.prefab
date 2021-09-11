@@ -82,16 +82,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: S2
   weaponSlot: 1
+  weaponType: 0
+  AvailableQuantity: 1
+  raycastTarget: {fileID: 0}
+  recoil: {fileID: 0}
+  rigController: {fileID: 0}
   isFiring: 0
   fireRate: 1
   bulletsPerShot: 7
   angleSpread: 2.5
   ammoCount: 0
+  fireMode: 1
   clipSize: 2
   raycastOrigin: {fileID: 1651433076237306829}
-  raycastTarget: {fileID: 0}
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
-  recoil: {fileID: 0}
   magazine: {fileID: 8384182766379841617}
   MuzzleFlash: {fileID: 3086586919343306688}
 --- !u!114 &8441311201649140514

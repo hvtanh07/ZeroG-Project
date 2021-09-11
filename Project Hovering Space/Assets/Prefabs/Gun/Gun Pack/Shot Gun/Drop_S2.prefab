@@ -311,4 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48925ac9d111672499959811d1c10cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponFab: {fileID: 4702013894692074577, guid: 8e3526f25fe1cb242ab6a8c84b7fda4e, type: 3}
+  nade_drop: {fileID: 0}
+  gun_drop: {fileID: 4702013894692074577, guid: 8e3526f25fe1cb242ab6a8c84b7fda4e, type: 3}
+  nadelaunch_drop: {fileID: 0}

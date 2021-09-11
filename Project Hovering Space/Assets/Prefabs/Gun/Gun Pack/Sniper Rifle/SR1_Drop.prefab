@@ -146,7 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48925ac9d111672499959811d1c10cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponFab: {fileID: 4283351601601323535, guid: c3108caed2f6bc1469024bf51dce4043, type: 3}
+  nade_drop: {fileID: 0}
+  gun_drop: {fileID: 4283351601601323535, guid: c3108caed2f6bc1469024bf51dce4043, type: 3}
+  nadelaunch_drop: {fileID: 0}
 --- !u!65 &2587782897077067621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,8 +160,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1291229, y: 0.22167534, z: 0.0961391}
+  m_Center: {x: 0.5415992, y: -0.02690065, z: 0.000000074505806}
 --- !u!1 &2822352986470170190
 GameObject:
   m_ObjectHideFlags: 0

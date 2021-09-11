@@ -48,23 +48,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Stun
   weaponSlot: 1
-  isFiring: 0
-  fireRate: 11
-  bulletSpeed: 1000
-  bulletDrop: 0
-  maxBounces: 0
-  MaxlifeTime: 3
-  MuzzleFlash: {fileID: 0}
-  HitEffect: {fileID: 0}
-  tracerEffect: {fileID: 0}
-  weaponName: 
-  ammoCount: 0
-  clipSize: 30
-  raycastOrigin: {fileID: 6070021028599895912}
+  weaponType: 0
+  AvailableQuantity: 1
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
+  rigController: {fileID: 0}
+  isFiring: 0
+  fireRate: 11
+  bulletsPerShot: 1
+  angleSpread: 1
+  ammoCount: 0
+  fireMode: 0
+  clipSize: 30
+  raycastOrigin: {fileID: 6070021028599895912}
+  bullets: {fileID: 0}
   magazine: {fileID: 7762538143679488031}
+  MuzzleFlash: {fileID: 0}
 --- !u!114 &8916946056638933016
 MonoBehaviour:
   m_ObjectHideFlags: 0

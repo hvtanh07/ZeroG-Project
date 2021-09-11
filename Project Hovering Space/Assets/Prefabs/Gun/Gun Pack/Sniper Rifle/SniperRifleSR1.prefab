@@ -82,16 +82,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: SR1
   weaponSlot: 0
+  weaponType: 0
+  AvailableQuantity: 1
+  raycastTarget: {fileID: 0}
+  recoil: {fileID: 0}
+  rigController: {fileID: 0}
   isFiring: 0
   fireRate: 1
   bulletsPerShot: 1
   angleSpread: 0
   ammoCount: 0
+  fireMode: 1
   clipSize: 30
   raycastOrigin: {fileID: 6125826215001719538}
-  raycastTarget: {fileID: 0}
   bullets: {fileID: 2885054185156142561, guid: b39db5ff2b1eae2489ed396e7a9a812a, type: 3}
-  recoil: {fileID: 0}
   magazine: {fileID: 9065597253856059202}
   MuzzleFlash: {fileID: 8394865526250768456}
 --- !u!114 &8708681263215313572

@@ -6,6 +6,7 @@ public class weaponPickup : MonoBehaviour
 {
     public RaycastGrenade nade_drop;
     public RaycastBulletGun gun_drop;
+    public RaycastNadeLauncher nadelaunch_drop;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +22,11 @@ public class weaponPickup : MonoBehaviour
             {
                 RaycastEquipment newNade = Instantiate(nade_drop);
                 activeWeapon.Equip(newNade);
+            }
+            if (nadelaunch_drop)
+            {
+                RaycastEquipment newNadeLaunch = Instantiate(nadelaunch_drop);
+                activeWeapon.Equip(newNadeLaunch);
             }
             //Destroy(gameObject);
         }

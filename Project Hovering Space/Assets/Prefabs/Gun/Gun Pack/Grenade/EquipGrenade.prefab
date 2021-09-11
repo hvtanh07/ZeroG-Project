@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Grenade
   weaponSlot: 2
+  weaponType: 2
   AvailableQuantity: 2
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
