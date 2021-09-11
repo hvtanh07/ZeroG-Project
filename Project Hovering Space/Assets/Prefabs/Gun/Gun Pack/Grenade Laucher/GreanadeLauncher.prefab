@@ -61,7 +61,7 @@ MonoBehaviour:
   fireRate: 1
   ammoCount: 0
   clipSize: 6
-  ShootingForce: 10
+  ShootingForce: 20
   raycastOrigin: {fileID: 5029210155642433915}
   bullets: {fileID: 1339383927705304552, guid: ec58025d0cfa2844ca319b6324823d10, type: 3}
   magazine: {fileID: 861134332778679342}

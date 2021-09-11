@@ -58,7 +58,7 @@ public class RaycastBulletGun : RaycastEquipment
     public void StartFiring()
     {
         isFiring = true;
-        //acumulatedTime = 0f;
+        acumulatedTime = 0f;
         recoil.Reset(); 
 
     }

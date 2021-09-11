@@ -19,6 +19,7 @@ public class bulletScript : MonoBehaviour
     public float bulletDrop = 0.0f;
     public int maxBounces = 0;
     public float MaxlifeTime = 3.0f;
+    public float bulletImpactForce = 1f;
     [Space(10)]
     [Header("Effect")]
     public ParticleSystem HitEffect;
@@ -36,7 +37,6 @@ public class bulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UpdateBullets(Time.deltaTime);
         SimulateBullets(Time.deltaTime);
     }
     Vector3 GetPosition()
@@ -51,6 +51,7 @@ public class bulletScript : MonoBehaviour
         time = 0.0f;
         tracer = Instantiate(tracerEffect, position, Quaternion.identity);
         tracer.AddPosition(position);
+        Destroy(tracer.gameObject, MaxlifeTime);
         bounce = maxBounces;
     }
 
@@ -71,12 +72,14 @@ public class bulletScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, distance))
         {
-            Destroy(tracer.gameObject);
-            HitEffect.transform.position = hitInfo.point;
-            HitEffect.transform.forward = hitInfo.normal;
-            HitEffect.Emit(1);
-            //HitEffect.transform.SetParent(hitInfo.transform, false);
-            
+            var tempBullet = Instantiate(HitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            tempBullet.transform.parent = hitInfo.transform;
+            tempBullet.Emit(1);
+
+            //HitEffect.transform.position = hitInfo.point;
+            //HitEffect.transform.forward = hitInfo.normal;
+            //HitEffect.Emit(1);
+
 
             //bullet.tracer.transform.position = hitInfo.point;
             time = MaxlifeTime;
@@ -91,7 +94,7 @@ public class bulletScript : MonoBehaviour
                 if (bulletAngle > minRicochetAngle)
                 {
                     if (Random.value < ricochetChance)
-                    {
+                    {                     
                         time = 0f;
                         initialPosition = hitInfo.point;
                         // maybe add some randomness on the reflect for some more realistic ricochet behaviour
@@ -105,7 +108,7 @@ public class bulletScript : MonoBehaviour
             var rb2d = hitInfo.collider.GetComponent<Rigidbody>();
             if (rb2d)
             {
-                rb2d.AddForceAtPosition(ray.direction * 2, hitInfo.point, ForceMode.Impulse);
+                rb2d.AddForceAtPosition(ray.direction * bulletImpactForce, hitInfo.point, ForceMode.Impulse);
             }
         }
 

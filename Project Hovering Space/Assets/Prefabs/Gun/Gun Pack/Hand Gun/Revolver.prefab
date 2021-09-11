@@ -88,7 +88,7 @@ MonoBehaviour:
   recoil: {fileID: 0}
   rigController: {fileID: 0}
   isFiring: 0
-  fireRate: 2
+  fireRate: 5
   bulletsPerShot: 1
   angleSpread: 1
   ammoCount: 0
