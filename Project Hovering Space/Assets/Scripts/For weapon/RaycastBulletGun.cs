@@ -20,6 +20,7 @@ public class RaycastBulletGun : RaycastEquipment
     public float fireRate = 11f;
     public int bulletsPerShot = 1;//5 
     public float angleSpread = 1.0f;//5   
+    public float spreadModifier = 1.0f;
     public int ammoCount;
     public Firemode fireMode;
     [Range(0, 100)]
@@ -117,9 +118,9 @@ public class RaycastBulletGun : RaycastEquipment
     Vector3 AddNoiseOnAngle()
     {
         // Find random angle between min & max inclusive
-        float xNoise = Random.Range(-angleSpread, angleSpread);
-        float yNoise = Random.Range(-angleSpread, angleSpread);
-        float zNoise = Random.Range(-angleSpread, angleSpread);
+        float xNoise = Random.Range(-angleSpread * spreadModifier, angleSpread * spreadModifier);
+        float yNoise = Random.Range(-angleSpread * spreadModifier, angleSpread * spreadModifier);
+        float zNoise = Random.Range(-angleSpread * spreadModifier, angleSpread * spreadModifier);
 
         //Debug.Log(xNoise + " " + yNoise + " " + zNoise);
         // Convert Angle to Vector3

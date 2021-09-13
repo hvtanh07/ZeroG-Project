@@ -13,6 +13,7 @@ public class PlayerAiming : MonoBehaviour
     public float MinXTurnNoGun = -80f;
     public float MaxXTurnNoGun = 90f;
     public float AimingRecoilReduction = 0.2f;
+    public float SpreadReduction = 0.3f;
     public Transform cameraLookat;
     [Space(10)]
     [Header("Camera Components")]
@@ -43,6 +44,7 @@ public class PlayerAiming : MonoBehaviour
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {
+            Weapon.spreadModifier = isAiming ? SpreadReduction : 1f;
             Weapon.recoil.recoilModifier = isAiming ? AimingRecoilReduction : 1f;
         }
     }
