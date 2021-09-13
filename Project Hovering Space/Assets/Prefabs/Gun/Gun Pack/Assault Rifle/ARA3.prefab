@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8831634344859521139}
   - component: {fileID: 2030729220204068712}
   - component: {fileID: 5898080262998052388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ARA3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,6 @@ Transform:
   - {fileID: 2434309947027589105}
   - {fileID: 6219141491881427314}
   - {fileID: 4223238585401485545}
-  - {fileID: 3588049072011897163}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,22 +49,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf41a634454e1fd4d8c38b1db9b59f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: ARA3
   weaponSlot: 0
+  weaponType: 0
+  AvailableQuantity: 0
+  raycastTarget: {fileID: 0}
+  recoil: {fileID: 0}
+  rigController: {fileID: 0}
   isFiring: 0
   fireRate: 11
   bulletsPerShot: 1
-  minSpread: 0
-  maxSpread: 0
-  weaponName: ARA3
+  angleSpread: 1
   ammoCount: 30
+  fireMode: 0
   clipSize: 30
   raycastOrigin: {fileID: 6219141491881427314}
-  raycastTarget: {fileID: 0}
   bullets: {fileID: 2885054185156142561, guid: dc8386abd553a434ba2554fa9f84b2f7, type: 3}
-  recoil: {fileID: 0}
   magazine: {fileID: 1698769822718981602}
   MuzzleFlash: {fileID: 4059141050477353383}
-  HitEffect: {fileID: 3676872843152112365}
 --- !u!114 &2030729220204068712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6219141491881427314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RaycastOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 1682668737736736116, guid: 0bcd89fc22917304a9552216cc470d69, type: 3}
       propertyPath: m_Name
       value: Magazine_M
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682668737736736116, guid: 0bcd89fc22917304a9552216cc470d69, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2378273980544257895, guid: 0bcd89fc22917304a9552216cc470d69, type: 3}
       propertyPath: m_RootOrder
@@ -240,6 +245,14 @@ PrefabInstance:
     - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_Name
       value: MuzzleFlash01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992675705445476, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_RootOrder
@@ -352,77 +365,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault Rifle A3
       objectReference: {fileID: 0}
+    - target: {fileID: 2533413473046332556, guid: a7ca346bdd8e6b7428c8c84db3212de7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812082537612497702, guid: a7ca346bdd8e6b7428c8c84db3212de7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445686574089785224, guid: a7ca346bdd8e6b7428c8c84db3212de7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7ca346bdd8e6b7428c8c84db3212de7, type: 3}
 --- !u!4 &3128122520669768418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1545623049624843935, guid: a7ca346bdd8e6b7428c8c84db3212de7, type: 3}
   m_PrefabInstance: {fileID: 4475017971183434877}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8181227421262837707
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 278972811107803226}
-    m_Modifications:
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631992730866332844, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-      propertyPath: m_Name
-      value: HitEffect_Metal
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
---- !u!4 &3588049072011897163 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4630475988088528512, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 8181227421262837707}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3676872843152112365 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4796173765594762534, guid: b7e0e6eca01fee641bed9f795ccc40a2, type: 3}
-  m_PrefabInstance: {fileID: 8181227421262837707}
   m_PrefabAsset: {fileID: 0}

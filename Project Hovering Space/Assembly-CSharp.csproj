@@ -65,10 +65,11 @@
     <Compile Include="Assets\Scripts\For player\WeaponAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\For player\ReloadWeapon.cs" />
     <Compile Include="Assets\Scripts\For player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\For bullet\ExplosionBullet.cs" />
     <Compile Include="Assets\Scripts\For weapon\greanade.cs" />
     <Compile Include="Assets\Scripts\For bullet\bulletScript.cs" />
     <Compile Include="Assets\Scripts\For player\ActiveWeapon.cs" />
-    <Compile Include="Assets\Scripts\For bullet\ExplosionBullet.cs" />
+    <Compile Include="Assets\Scripts\For player\PlayerAiming.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
