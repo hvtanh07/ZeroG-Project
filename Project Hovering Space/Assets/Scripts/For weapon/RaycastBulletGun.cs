@@ -98,6 +98,7 @@ public class RaycastBulletGun : RaycastEquipment
 
     public override void FireBullet()
     {
+        Debug.DrawLine(raycastOrigin.position, raycastTarget.position,Color.red, 1f);
         if (ammoCount <=0 || reloading)
         {
             return;
