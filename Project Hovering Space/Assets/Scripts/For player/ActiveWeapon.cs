@@ -24,6 +24,7 @@ public class ActiveWeapon : MonoBehaviour
     [Space(10)]
     [Header("Properties")]
     public Transform crosshairTarget;
+    public Transform scopeTarget;
     public Animator rigController;
     public PlayerAiming playerAiming;
     public WeaponAnimationEvents animationEvents;
@@ -34,9 +35,12 @@ public class ActiveWeapon : MonoBehaviour
     int SelectedWeapon = 0;
     int PrevSelectedWeapon = 0;
 
+    //Transform Target;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Target = crosshairTarget;
         RaycastEquipment exitingWeapon = GetComponentInChildren<RaycastEquipment>();
         if (exitingWeapon)
         {
@@ -81,6 +85,13 @@ public class ActiveWeapon : MonoBehaviour
         var weapon = GetWeapon(activeweaponIndex);
         if (weapon)
         {
+            if (playerAiming.isAiming)
+            {
+                weapon.raycastTarget = scopeTarget;
+            }else
+            {
+                weapon.raycastTarget = crosshairTarget;
+            }
             weapon.UpdateWeapon(Time.deltaTime, isHolstered);
         }
         if (Input.GetKeyDown(KeyCode.X))

@@ -15,8 +15,10 @@ public class PlayerAiming : MonoBehaviour
     public float AimingRecoilReduction = 0.2f;
     public float SpreadReduction = 0.3f;
     public Transform cameraLookat;
+    public bool isAiming = false;
     [Space(10)]
     [Header("Camera Components")]
+    public GameObject scopingCam;
     public Animator rigController;
     public Cinemachine.AxisState xAxis;
     public Cinemachine.AxisState yAxis;
@@ -38,9 +40,9 @@ public class PlayerAiming : MonoBehaviour
 
     private void Update()
     {
-        bool isAiming = Input.GetMouseButton(1);
+        isAiming = Input.GetMouseButton(1);
         animator.SetBool(isAimingParam, isAiming);
-
+        scopingCam.SetActive(isAiming);
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {

@@ -13,6 +13,7 @@ public class CrossHairTarget : MonoBehaviour
     void Start()
     {
         maincamera = Camera.main;
+        //AimingCam = Camera.;
     }
 
     // Update is called once per frame
