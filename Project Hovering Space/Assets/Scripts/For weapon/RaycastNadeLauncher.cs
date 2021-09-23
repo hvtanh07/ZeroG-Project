@@ -15,8 +15,7 @@ public class RaycastNadeLauncher : RaycastEquipment
     public int ammoCount;
     [Range(0, 100)]
     public int clipSize = 30;
-    public float ShootingForce = 10f;
-    bool reloading = false;
+    public float ShootingForce = 10f;   
     [Space(10)]
     [Header("Location & Constraint object")]
     public Transform raycastOrigin;
@@ -32,7 +31,7 @@ public class RaycastNadeLauncher : RaycastEquipment
         ammoCount = clipSize;
         recoil = GetComponent<WeaponRecoil>();
     }
-    public void SetReloading(bool value)
+    public override void SetReloading(bool value)
     {
         reloading = value;
         if (reloading)

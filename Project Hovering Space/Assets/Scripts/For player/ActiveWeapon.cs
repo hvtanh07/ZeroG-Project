@@ -48,6 +48,12 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
+    public RaycastEquipment GetActiveWeapon()
+    {
+        if (GetWeapon(activeweaponIndex))            
+                return GetWeapon(activeweaponIndex);
+        return null;
+    }
     public RaycastBulletGun GetActiveGun()
     {
         if (GetWeapon(activeweaponIndex))
@@ -312,6 +318,8 @@ public class ActiveWeapon : MonoBehaviour
         {
             weapon.StopFiring();
             rigController.SetBool("holster_weapon", true);
+            playerAiming.isAiming = false;
+            playerAiming.isScoping = false;
             //do
             //{
             //    yield return new WaitForEndOfFrame();
@@ -330,6 +338,8 @@ public class ActiveWeapon : MonoBehaviour
         {
             rigController.SetBool("holster_weapon", false);
             rigController.Play("Equip_" + weapon.weaponName);
+            playerAiming.isAiming = false;
+            playerAiming.isScoping = false;
             //do
             //{
             //    yield return new WaitForEndOfFrame();

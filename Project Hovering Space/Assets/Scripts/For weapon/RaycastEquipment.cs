@@ -12,6 +12,7 @@ public class RaycastEquipment : MonoBehaviour
     public Transform raycastTarget;
     public WeaponRecoil recoil;
     public Animator rigController;
+    public bool reloading = false;
 
 
     public virtual void UpdateWeapon(float deltaTime, bool holstered)
@@ -27,5 +28,9 @@ public class RaycastEquipment : MonoBehaviour
     public virtual void StopFiring()
     {
         //Stopfiring
-    }   
+    }
+    public virtual void SetReloading(bool value)
+    {
+       //set reloading state
+    }
 }

@@ -24,6 +24,7 @@ public class PlayerAiming : MonoBehaviour
     public Cinemachine.AxisState yAxis;
 
     Camera maincamera;
+    [HideInInspector] public bool Holding = false;
     Animator animator;
     ActiveWeapon activeWeapon;
     int isAimingParam = Animator.StringToHash("isAiming");
@@ -40,26 +41,30 @@ public class PlayerAiming : MonoBehaviour
 
     public void Aim(InputAction.CallbackContext value)
     {
-        if (value.canceled)
-        {            
+        var Weapon = activeWeapon.GetActiveWeapon();
+        if (value.canceled && !Holding && !Weapon.reloading)
+        {        
             isAiming = !isAiming;
         }
     }
     public void Scope(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        var Weapon = activeWeapon.GetActiveWeapon();
+        if (!activeWeapon.isHolstered && !Weapon.reloading)
         {
-            isAiming = true;
-            isScoping = true;
-        }
-        if (value.canceled)
-        {
-            if (isScoping)
+            if (value.performed)
             {
+                Holding = true;
+                isAiming = true;
+                isScoping = true;                
+            }
+            if (value.canceled && isScoping)
+            {
+                Holding = false;
                 isAiming = false;
                 isScoping = false;
             }
-        }
+        }       
     }
 
     private void Update()

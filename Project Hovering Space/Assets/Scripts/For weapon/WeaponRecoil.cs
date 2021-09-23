@@ -40,8 +40,15 @@ public class WeaponRecoil : MonoBehaviour
         VerticeRecoil = recoilPatern[index].y;
 
         index = NextIndex(index);
-
-        rigController.Play("recoil_anim_" + weaponName, 1, 0.0f);
+        if (playerAiming.isScoping)
+        {
+            rigController.Play("recoil_scope_" + weaponName, 1, 0.0f);
+        }
+        else
+        {
+            rigController.Play("recoil_anim_" + weaponName, 1, 0.0f);
+        }
+        
     }
     // Update is called once per frame
     void Update()

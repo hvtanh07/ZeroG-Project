@@ -25,7 +25,7 @@ public class RaycastBulletGun : RaycastEquipment
     public Firemode fireMode;
     [Range(0, 100)]
     public int clipSize = 30;
-    bool reloading = false;
+    
     [Space(10)]
     [Header("Location & Constraint object")]
     public Transform raycastOrigin;
@@ -45,7 +45,7 @@ public class RaycastBulletGun : RaycastEquipment
         recoil = GetComponent<WeaponRecoil>();
     }
 
-    public void SetReloading(bool value)
+    public override void SetReloading(bool value)
     {
         reloading = value;
         if (reloading)
