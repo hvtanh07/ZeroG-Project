@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4431803517448127839}
   - component: {fileID: 7979363393294924198}
   - component: {fileID: 2695523061394948973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ScopeA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperScopeRealisticLens
       objectReference: {fileID: 0}
+    - target: {fileID: 599616105165507711, guid: b5126f380f1571348ab8b5b567764264, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3428552521660972561, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -175,6 +179,18 @@ PrefabInstance:
     - target: {fileID: 3838257613274067058, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.2093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022503740696694997, guid: b5126f380f1571348ab8b5b567764264, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961926936656258890, guid: b5126f380f1571348ab8b5b567764264, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200743086578776523, guid: b5126f380f1571348ab8b5b567764264, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5126f380f1571348ab8b5b567764264, type: 3}

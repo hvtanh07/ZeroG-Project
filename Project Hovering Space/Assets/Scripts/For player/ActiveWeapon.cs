@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
+using UnityEngine.InputSystem;
+
 
 
 public class ActiveWeapon : MonoBehaviour
@@ -80,38 +80,31 @@ public class ActiveWeapon : MonoBehaviour
     }
 
     //Update is called once per frame
+
+
     void Update()
     {
         var weapon = GetWeapon(activeweaponIndex);
         if (weapon)
         {
-            if (playerAiming.isAiming)
+            if (playerAiming.isScoping)
             {
                 weapon.raycastTarget = scopeTarget;
-            }else
+            }
+            else
             {
                 weapon.raycastTarget = crosshairTarget;
             }
             weapon.UpdateWeapon(Time.deltaTime, isHolstered);
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            ToggleActiveWeapon();
-        }
+        FindOutOfStockWeapon();
+    }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            do
-            {
-                if (SelectedWeapon > equiped_weapons.Length - 1)
-                    SelectedWeapon = 0;
-                else
-                    SelectedWeapon++;
-            }
-            while (!GetWeapon(SelectedWeapon));    
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
+    #region Input Control
+    public void ScrollWheel(InputAction.CallbackContext value)
+    {
+        float valueScroll = value.ReadValue<float>();
+        if (valueScroll < 0)
             do
             {
                 if (SelectedWeapon < 0)
@@ -120,27 +113,67 @@ public class ActiveWeapon : MonoBehaviour
                     SelectedWeapon--;
             }
             while (!GetWeapon(SelectedWeapon));
+        if (valueScroll > 0)
+            do
+            {
+                if (SelectedWeapon > equiped_weapons.Length - 1)
+                    SelectedWeapon = 0;
+                else
+                    SelectedWeapon++;
+            }
+            while (!GetWeapon(SelectedWeapon));
+        SelectingWeapon(SelectedWeapon);
+    }
+    public void Shoot(InputAction.CallbackContext value)
+    {
+        var weapon = GetWeapon(activeweaponIndex);
+        if (value.performed)
+        {
+            if(!isHolstered)
+                weapon.StartFiring();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (value.canceled)
+        {
+            weapon.StopFiring();
+        }
+    }
+    public void ToggleHolster(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            ToggleActiveWeapon();
+        }
+    }
+    public void Primary(InputAction.CallbackContext value)
+    {   
+        if (value.performed)
         {
             SelectedWeapon = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+    }
+    public void Secondary(InputAction.CallbackContext value)
+    {
+        if (value.performed)
         {
             SelectedWeapon = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+    }
+    public void Equipement1(InputAction.CallbackContext value)
+    {
+        if (value.performed)
         {
             SelectedWeapon = 2;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+    }
+    public void Equipement2(InputAction.CallbackContext value)
+    {
+        if (value.performed)
         {
             SelectedWeapon = 3;
         }
-        SelectingWeapon(SelectedWeapon);
-        FindOutOfStockWeapon();
     }
+    #endregion
 
     void SelectingWeapon(int weaponIndex)
     {

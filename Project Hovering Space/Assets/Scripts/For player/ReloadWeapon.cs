@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ReloadWeapon : MonoBehaviour
 {
@@ -18,7 +17,8 @@ public class ReloadWeapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    public void Reload(InputAction.CallbackContext value)
     {
         RaycastGrenade nade = activeWeapon.GetActiveNade();
         if (nade)

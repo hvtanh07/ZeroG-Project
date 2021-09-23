@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAiming : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class PlayerAiming : MonoBehaviour
     public float SpreadReduction = 0.3f;
     public Transform cameraLookat;
     public bool isAiming = false;
+    public bool isScoping = false;
     [Space(10)]
     [Header("Camera Components")]
     public GameObject scopingCam;
@@ -38,11 +38,34 @@ public class PlayerAiming : MonoBehaviour
         activeWeapon = GetComponent<ActiveWeapon>();
     }
 
-    private void Update()
+    public void Aim(InputAction.CallbackContext value)
     {
-        isAiming = Input.GetMouseButton(1);
+        if (value.canceled)
+        {            
+            isAiming = !isAiming;
+        }
+    }
+    public void Scope(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            isAiming = true;
+            isScoping = true;
+        }
+        if (value.canceled)
+        {
+            if (isScoping)
+            {
+                isAiming = false;
+                isScoping = false;
+            }
+        }
+    }
+
+    private void Update()
+    {      
         animator.SetBool(isAimingParam, isAiming);
-        scopingCam.SetActive(isAiming);
+        scopingCam.SetActive(isScoping);
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {

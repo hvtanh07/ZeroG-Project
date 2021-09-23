@@ -56,25 +56,15 @@ public class RaycastBulletGun : RaycastEquipment
         }
     }
 
-    public void StartFiring()
+    public override void StartFiring()
     {
         isFiring = true;
         acumulatedTime = 0f;
-        recoil.Reset(); 
-
+        recoil.Reset();
     }
 
     public override void UpdateWeapon(float deltaTime, bool holstered)
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (!holstered)
-                StartFiring();
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            StopFiring();
-        }
+    {     
         if (isFiring)
         {
             UpdateFiring(deltaTime);
@@ -96,7 +86,7 @@ public class RaycastBulletGun : RaycastEquipment
         }
     }
 
-    public override void FireBullet()
+    public void FireBullet()
     {
         Debug.DrawLine(raycastOrigin.position, raycastTarget.position,Color.red, 1f);
         if (ammoCount <=0 || reloading)

@@ -42,17 +42,8 @@ public class RaycastNadeLauncher : RaycastEquipment
                 gunanimation.Play(weaponName + "_reload", 0, 0.0f);
         }
     }
-
-    // Update is called once per frame
-    public override void UpdateWeapon(float deltaTime, bool holstered)
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (!holstered)
-                FireBullet();
-        }
-    }
-    public override void FireBullet()
+   
+    public override void StartFiring()
     {
         if (ammoCount <= 0 || reloading)
         {
