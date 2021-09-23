@@ -13,6 +13,7 @@ public class CrossHairTarget : MonoBehaviour
     void Start()
     {
         maincamera = Camera.main;
+        //AimingCam = Camera.;
     }
 
     // Update is called once per frame
@@ -20,8 +21,6 @@ public class CrossHairTarget : MonoBehaviour
     {
         ray.origin = maincamera.transform.position;
         ray.direction = maincamera.transform.forward;
-        //Physics.Raycast(ray, out hitInfo);
-        //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 0.5f);
         transform.position = hitInfo.point;
         if (Physics.Raycast(ray, out hitInfo))
         {

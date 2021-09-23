@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2788934926226294758}
   - component: {fileID: 8469231179246992159}
   - component: {fileID: 4493694853617893844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HoloA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0e0d5566fa754f84c95c337f5b7a2ba1, type: 2}
-  - {fileID: 2100000, guid: 959cf3b72bff4db4e8e7041bc92618c9, type: 2}
+  - {fileID: 2100000, guid: bdaba681a9e8680429abab53d86230c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

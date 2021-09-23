@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ReloadWeapon : MonoBehaviour
 {
+    [HideInInspector] public PlayerAiming playerAiming;
     [Header("Properties")]
     public Animator rigController;
     public WeaponAnimationEvents animationEvents;
@@ -14,49 +14,30 @@ public class ReloadWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAiming = GetComponent<PlayerAiming>();
         animationEvents.WeaponAnimationEvent.AddListener(OnAnimationEvent);
     }
-
+    private void Update()
+    {
+        //get current weapon bullet and update UI
+    }
     // Update is called once per frame
-    void Update()
+
+    public void Reload(InputAction.CallbackContext value)
     {
         RaycastGrenade nade = activeWeapon.GetActiveNade();
         if (nade)
             rigController.SetInteger("NumOfNade", nade.AvailableQuantity);
 
-
-        RaycastBulletGun weapon = activeWeapon.GetActiveGun();
-        RaycastNadeLauncher nadeLauncher = activeWeapon.GetActiveGrenadeLauncher();
+        RaycastEquipment weapon = activeWeapon.GetActiveWeapon();
         if (weapon)
         {
-            //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
-            if (Input.GetKeyDown(KeyCode.R))
+            if (!activeWeapon.isHolstered)
             {
-                if (!activeWeapon.isHolstered)
-                {
-                    rigController.SetTrigger("reload_weapon");
-                    weapon.SetReloading(true);
-                }
-            }
-            if (weapon.isFiring)
-            {
-                //update UI ammo count
-            }
-        }
-        if (nadeLauncher)
-        {
-            //if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <= 0)
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (!activeWeapon.isHolstered)
-                {
-                    rigController.SetTrigger("reload_weapon");
-                    nadeLauncher.SetReloading(true);
-                }
-            }
-            if (nadeLauncher.isFiring)
-            {
-                //update UI ammo count
+                playerAiming.isAiming = false;
+                playerAiming.isScoping = false;
+                rigController.SetTrigger("reload_weapon");                             
+                weapon.SetReloading(true);
             }
         }
     }
@@ -131,6 +112,11 @@ public class ReloadWeapon : MonoBehaviour
     {
         RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
+        if (playerAiming.Holding)
+        {
+            playerAiming.isAiming = true;
+            playerAiming.isScoping = true;
+        }
         //update UI ammo count
     }
     void DettachMagazine_GL()
@@ -152,6 +138,11 @@ public class ReloadWeapon : MonoBehaviour
     {
         RaycastNadeLauncher weapon = activeWeapon.GetActiveGrenadeLauncher();
         weapon.SetReloading(false);
+        if (playerAiming.Holding)
+        {
+            playerAiming.isAiming = true;
+            playerAiming.isScoping = true;
+        }
         //update UI ammo count
     }
     void NadeleaveHand()

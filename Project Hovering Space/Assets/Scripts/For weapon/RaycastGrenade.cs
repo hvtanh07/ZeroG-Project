@@ -29,16 +29,7 @@ public class RaycastGrenade : RaycastEquipment
     }
 
     public override void UpdateWeapon(float deltaTime, bool holstered)
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if(!holstered)
-                Aimdirection();
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            Throw();
-        }
+    {       
         if (Input.GetKeyDown(KeyCode.P))
         {
             CancelThrow();
@@ -51,25 +42,20 @@ public class RaycastGrenade : RaycastEquipment
                 ThrowForce = MaxForce;
         }         
     }
-
-    void Aimdirection()
+    public override void StartFiring()
     {
         rigController.SetBool("cancel_nade", false);
         rigController.ResetTrigger("throw_nade");
         rigController.Play("Aim Grenade");
         aiming = true;
-        
-        //throwNade.AimNade();
     }
-
+    public override void StopFiring()
+    {
+        rigController.SetTrigger("throw_nade");
+    }
+    
     public void CancelThrow()
     {
         rigController.SetBool("cancel_nade", true);
     }
-    void Throw()
-    {
-        rigController.SetTrigger("throw_nade");
-        //throwNade.ThrowNade();
-    }
-     
 }

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAiming : MonoBehaviour
 {
@@ -15,13 +14,17 @@ public class PlayerAiming : MonoBehaviour
     public float AimingRecoilReduction = 0.2f;
     public float SpreadReduction = 0.3f;
     public Transform cameraLookat;
+    public bool isAiming = false;
+    public bool isScoping = false;
     [Space(10)]
     [Header("Camera Components")]
+    public GameObject scopingCam;
     public Animator rigController;
     public Cinemachine.AxisState xAxis;
     public Cinemachine.AxisState yAxis;
 
     Camera maincamera;
+    [HideInInspector] public bool Holding = false;
     Animator animator;
     ActiveWeapon activeWeapon;
     int isAimingParam = Animator.StringToHash("isAiming");
@@ -36,11 +39,38 @@ public class PlayerAiming : MonoBehaviour
         activeWeapon = GetComponent<ActiveWeapon>();
     }
 
-    private void Update()
+    public void Aim(InputAction.CallbackContext value)
     {
-        bool isAiming = Input.GetMouseButton(1);
-        animator.SetBool(isAimingParam, isAiming);
+        var Weapon = activeWeapon.GetActiveWeapon();
+        if (value.canceled && !Holding && !Weapon.reloading)
+        {        
+            isAiming = !isAiming;
+        }
+    }
+    public void Scope(InputAction.CallbackContext value)
+    {
+        var Weapon = activeWeapon.GetActiveWeapon();
+        if (!activeWeapon.isHolstered && !Weapon.reloading)
+        {
+            if (value.performed)
+            {
+                Holding = true;
+                isAiming = true;
+                isScoping = true;                
+            }
+            if (value.canceled && isScoping)
+            {
+                Holding = false;
+                isAiming = false;
+                isScoping = false;
+            }
+        }       
+    }
 
+    private void Update()
+    {      
+        animator.SetBool(isAimingParam, isAiming);
+        scopingCam.SetActive(isScoping);
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {
