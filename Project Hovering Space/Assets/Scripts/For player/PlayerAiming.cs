@@ -11,8 +11,10 @@ public class PlayerAiming : MonoBehaviour
 
     public float MinXTurnNoGun = -80f;
     public float MaxXTurnNoGun = 90f;
-    public float AimingRecoilReduction = 0.2f;
-    public float SpreadReduction = 0.3f;
+    public float AimingRecoilReduction = 0.8f;
+    public float SpreadReduction = 0.6f;
+    public float ScopingRecoilReduction = 0.6f;
+    public float ScopingSpreadReduction = 0.3f;
     public Transform cameraLookat;
     public bool isAiming = false;
     public bool isScoping = false;
@@ -42,29 +44,31 @@ public class PlayerAiming : MonoBehaviour
     public void Aim(InputAction.CallbackContext value)
     {
         var Weapon = activeWeapon.GetActiveWeapon();
-        if (value.canceled && !Holding && !Weapon.reloading)
-        {        
-            isAiming = !isAiming;
-        }
+        if (Weapon)
+            if (value.canceled && !Holding && !Weapon.reloading)
+            {
+                isAiming = !isAiming;
+            }
     }
     public void Scope(InputAction.CallbackContext value)
     {
         var Weapon = activeWeapon.GetActiveWeapon();
-        if (!activeWeapon.isHolstered && !Weapon.reloading)
-        {
-            if (value.performed)
+        if (Weapon)
+            if (!activeWeapon.isHolstered && !Weapon.reloading)
             {
-                Holding = true;
-                isAiming = true;
-                isScoping = true;                
+                if (value.performed)
+                {
+                    Holding = true;
+                    isAiming = true;
+                    isScoping = true;
+                }
+                if (value.canceled && isScoping)
+                {
+                    Holding = false;
+                    isAiming = false;
+                    isScoping = false;
+                }
             }
-            if (value.canceled && isScoping)
-            {
-                Holding = false;
-                isAiming = false;
-                isScoping = false;
-            }
-        }       
     }
 
     private void Update()
@@ -74,8 +78,8 @@ public class PlayerAiming : MonoBehaviour
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {
-            Weapon.spreadModifier = isAiming ? SpreadReduction : 1f;
-            Weapon.recoil.recoilModifier = isAiming ? AimingRecoilReduction : 1f;
+            Weapon.spreadModifier = isAiming ? (isScoping ? ScopingSpreadReduction : SpreadReduction) : 1f;
+            Weapon.recoil.recoilModifier = isAiming ? (isScoping ? ScopingRecoilReduction : AimingRecoilReduction) : 1f;
         }
     }
 

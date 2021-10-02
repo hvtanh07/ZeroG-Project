@@ -133,16 +133,19 @@ public class ActiveWeapon : MonoBehaviour
     public void Shoot(InputAction.CallbackContext value)
     {
         var weapon = GetWeapon(activeweaponIndex);
-        if (value.performed)
+        if (weapon)
         {
-            if(!isHolstered)
-                weapon.StartFiring();
-        }
+            if (value.performed)
+            {
+                if (!isHolstered)
+                    weapon.StartFiring();
+            }
 
-        if (value.canceled)
-        {
-            weapon.StopFiring();
-        }
+            if (value.canceled)
+            {
+                weapon.StopFiring();
+            }
+        }      
     }
     public void ToggleHolster(InputAction.CallbackContext value)
     {

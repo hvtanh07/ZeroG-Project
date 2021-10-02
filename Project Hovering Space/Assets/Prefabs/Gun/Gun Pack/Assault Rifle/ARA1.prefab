@@ -87,10 +87,11 @@ MonoBehaviour:
   raycastTarget: {fileID: 0}
   recoil: {fileID: 0}
   rigController: {fileID: 0}
+  reloading: 0
   isFiring: 0
   fireRate: 11
   bulletsPerShot: 1
-  angleSpread: 1
+  angleSpread: 3.5
   spreadModifier: 1
   ammoCount: 30
   fireMode: 0
