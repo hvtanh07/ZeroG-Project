@@ -12,6 +12,7 @@ public class RaycastEquipment : MonoBehaviour
     public Transform raycastTarget;
     public WeaponRecoil recoil;
     public Animator rigController;
+    public bool Scope = false;
     public bool reloading = false;
 
 

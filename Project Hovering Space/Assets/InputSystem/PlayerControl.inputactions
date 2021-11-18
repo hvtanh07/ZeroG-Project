@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ScopeAim",
-                    "type": "Button",
-                    "id": "c4e700a0-1404-4b50-8531-6a7b9065f342",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "60b2b8a8-4d72-4e46-8ccb-2efb9d9db3b0",
@@ -126,21 +118,10 @@
                     "name": "",
                     "id": "64199772-4adb-49e1-b1d0-f271d11cd90d",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "831b1391-7009-4a94-82b3-d842a21a6fdb",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Hold(duration=0.2)",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "ScopeAim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

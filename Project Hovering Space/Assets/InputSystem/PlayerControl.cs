@@ -35,14 +35,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ScopeAim"",
-                    ""type"": ""Button"",
-                    ""id"": ""c4e700a0-1404-4b50-8531-6a7b9065f342"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""60b2b8a8-4d72-4e46-8ccb-2efb9d9db3b0"",
@@ -139,21 +131,10 @@ public class @PlayerControl : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""64199772-4adb-49e1-b1d0-f271d11cd90d"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""831b1391-7009-4a94-82b3-d842a21a6fdb"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold(duration=0.2)"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""ScopeAim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -337,7 +318,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
-        m_Player_ScopeAim = m_Player.FindAction("ScopeAim", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Holster = m_Player.FindAction("Holster", throwIfNotFound: true);
         m_Player_WeaponWheel = m_Player.FindAction("WeaponWheel", throwIfNotFound: true);
@@ -399,7 +379,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Aim;
-    private readonly InputAction m_Player_ScopeAim;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Holster;
     private readonly InputAction m_Player_WeaponWheel;
@@ -416,7 +395,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
         public PlayerActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
-        public InputAction @ScopeAim => m_Wrapper.m_Player_ScopeAim;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Holster => m_Wrapper.m_Player_Holster;
         public InputAction @WeaponWheel => m_Wrapper.m_Player_WeaponWheel;
@@ -442,9 +420,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                @ScopeAim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScopeAim;
-                @ScopeAim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScopeAim;
-                @ScopeAim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScopeAim;
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
@@ -485,9 +460,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
-                @ScopeAim.started += instance.OnScopeAim;
-                @ScopeAim.performed += instance.OnScopeAim;
-                @ScopeAim.canceled += instance.OnScopeAim;
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
@@ -535,7 +507,6 @@ public class @PlayerControl : IInputActionCollection, IDisposable
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
-        void OnScopeAim(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnHolster(InputAction.CallbackContext context);
         void OnWeaponWheel(InputAction.CallbackContext context);

@@ -45,10 +45,24 @@ public class PlayerAiming : MonoBehaviour
     {
         var Weapon = activeWeapon.GetActiveWeapon();
         if (Weapon)
+        {
+            if (value.started && !Holding && !Weapon.reloading)
+            {
+                if (!isAiming)
+                {
+                    isAiming = true;
+                    isScoping = Weapon.Scope;
+                }               
+            }
             if (value.canceled && !Holding && !Weapon.reloading)
             {
-                isAiming = !isAiming;
+                if (isAiming)
+                {
+                    isAiming = false;
+                    isScoping = false;
+                }             
             }
+        }        
     }
     public void Scope(InputAction.CallbackContext value)
     {

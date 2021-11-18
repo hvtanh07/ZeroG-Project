@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cea5a94f-366f-9134-31e0-f0468fad08fe": {
+      "ProjectGuid": "cea5a94f-366f-9134-31e0-f0468fad08fe",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 0
+    },
+    "3fd706d1-a33e-5976-0add-74d123a6b26e": {
+      "ProjectGuid": "3fd706d1-a33e-5976-0add-74d123a6b26e",
+      "DisplayName": "Unity.InputSystem",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
