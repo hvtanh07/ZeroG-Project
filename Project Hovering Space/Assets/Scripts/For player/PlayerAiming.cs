@@ -25,11 +25,11 @@ public class PlayerAiming : MonoBehaviour
     public Cinemachine.AxisState xAxis;
     public Cinemachine.AxisState yAxis;
 
-    Camera maincamera;
-    [HideInInspector] public bool Holding = false;
+    Camera maincamera;    
     Animator animator;
     ActiveWeapon activeWeapon;
     int isAimingParam = Animator.StringToHash("isAiming");
+    int isScopeParam = Animator.StringToHash("isScope");
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class PlayerAiming : MonoBehaviour
         var Weapon = activeWeapon.GetActiveWeapon();
         if (Weapon)
         {
-            if (value.started && !Holding && !Weapon.reloading)
+            if (value.started &&  !Weapon.reloading)
             {
                 if (!isAiming)
                 {
@@ -54,7 +54,7 @@ public class PlayerAiming : MonoBehaviour
                     isScoping = Weapon.Scope;
                 }               
             }
-            if (value.canceled && !Holding && !Weapon.reloading)
+            if (value.canceled)
             {
                 if (isAiming)
                 {
@@ -64,31 +64,12 @@ public class PlayerAiming : MonoBehaviour
             }
         }        
     }
-    public void Scope(InputAction.CallbackContext value)
-    {
-        var Weapon = activeWeapon.GetActiveWeapon();
-        if (Weapon)
-            if (!activeWeapon.isHolstered && !Weapon.reloading)
-            {
-                if (value.performed)
-                {
-                    Holding = true;
-                    isAiming = true;
-                    isScoping = true;
-                }
-                if (value.canceled && isScoping)
-                {
-                    Holding = false;
-                    isAiming = false;
-                    isScoping = false;
-                }
-            }
-    }
 
     private void Update()
     {      
         animator.SetBool(isAimingParam, isAiming);
-        scopingCam.SetActive(isScoping);
+        animator.SetBool(isScopeParam, isScoping);
+
         var Weapon = activeWeapon.GetActiveGun();
         if (Weapon)
         {

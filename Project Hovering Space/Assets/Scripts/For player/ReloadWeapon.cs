@@ -112,11 +112,11 @@ public class ReloadWeapon : MonoBehaviour
     {
         RaycastBulletGun weapon = activeWeapon.GetActiveGun();
         weapon.SetReloading(false);
-        if (playerAiming.Holding)
-        {
-            playerAiming.isAiming = true;
-            playerAiming.isScoping = true;
-        }
+        //if (playerAiming.Holding)
+        //{
+        //    playerAiming.isAiming = true;
+        //    playerAiming.isScoping = true;
+        //}
         //update UI ammo count
     }
     void DettachMagazine_GL()
@@ -138,11 +138,11 @@ public class ReloadWeapon : MonoBehaviour
     {
         RaycastNadeLauncher weapon = activeWeapon.GetActiveGrenadeLauncher();
         weapon.SetReloading(false);
-        if (playerAiming.Holding)
-        {
-            playerAiming.isAiming = true;
-            playerAiming.isScoping = true;
-        }
+        //if (playerAiming.Holding)
+        //{
+        //    playerAiming.isAiming = true;
+        //    playerAiming.isScoping = true;
+        //}
         //update UI ammo count
     }
     void NadeleaveHand()
