@@ -127,17 +127,6 @@
                 },
                 {
                     "name": "",
-                    "id": "19b98ac7-042c-47be-b2c3-b2d0aa5e7152",
-                    "path": "<Keyboard>/m",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3cb46ac3-6edd-44dd-9b23-b3b0b1d38dea",
                     "path": "<Keyboard>/r",
                     "interactions": "",

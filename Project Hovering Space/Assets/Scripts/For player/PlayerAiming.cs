@@ -52,7 +52,7 @@ public class PlayerAiming : MonoBehaviour
                 {
                     isAiming = true;
                     isScoping = Weapon.Scope;
-                }               
+                }
             }
             if (value.canceled)
             {
@@ -60,7 +60,7 @@ public class PlayerAiming : MonoBehaviour
                 {
                     isAiming = false;
                     isScoping = false;
-                }             
+                }
             }
         }        
     }
@@ -90,7 +90,7 @@ public class PlayerAiming : MonoBehaviour
         }
         else
         {
-            //xAxis.m_Wrap = false;
+            xAxis.m_Wrap = false;
             //while (xAxis.m_MaxValue > MaxXTurn)
             //{
             //    xAxis.m_MaxValue -= Time.deltaTime;
