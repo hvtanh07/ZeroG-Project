@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4277340501458235458}
   - component: {fileID: 7521191617488014523}
   - component: {fileID: 2572871119477175920}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ScopeB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 599616105165507711, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3428552521660972561, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_RootOrder
@@ -174,15 +174,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4022503740696694997, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7961926936656258890, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8200743086578776523, guid: b5126f380f1571348ab8b5b567764264, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5126f380f1571348ab8b5b567764264, type: 3}
